@@ -6,3 +6,4 @@ Always a work in progress :smile:
 ## Showcases
 - Custom Repository for SQL [[View Here]](https://github.com/brandonhein/Hein.Framework/tree/master/Repository#heinframeworkrepository-for-sql-database-usage)
 - Custom Repository for Dynamo [[View Here]](https://github.com/brandonhein/Hein.Framework/tree/master/Repository#heinframeworkdynamo-for-aws-dynamodb-database-usage)
+- Custom Dependancy Injection [[View Here]](https://github.com/brandonhein/Hein.Framework/tree/master/DependancyInjection#heinframeworkdependancyinjection)
