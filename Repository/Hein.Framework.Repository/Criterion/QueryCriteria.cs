@@ -12,7 +12,9 @@ namespace Hein.Framework.Repository.Criterion
         {
             get
             {
-                var sqlString = string.Concat("USE ", base.Database);
+                var sqlString = !string.IsNullOrEmpty(base.Database)
+                    ? string.Concat("USE ", base.Database)
+                    : string.Empty;
 
                 sqlString = string.Concat(sqlString, "SELECT",
                     _isDistinct

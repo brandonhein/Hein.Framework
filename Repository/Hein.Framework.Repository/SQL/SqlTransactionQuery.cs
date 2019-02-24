@@ -45,7 +45,9 @@ namespace Hein.Framework.Repository.SQL
 
         private string BuildCommandStart()
         {
-            string command = string.Concat("USE ", base.Database);
+            string command = !string.IsNullOrEmpty(base.Database)
+                    ? string.Concat("USE ", base.Database)
+                    : string.Empty;
 
             switch (_transactionType)
             {
