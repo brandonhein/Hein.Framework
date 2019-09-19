@@ -73,6 +73,21 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Logging", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Logging.Tests", "Logging\Hein.Framework.Logging.Tests\Hein.Framework.Logging.Tests.csproj", "{7469388C-CA8B-40D7-96D1-797168A6BB2D}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{497DC423-3DFA-40ED-910C-69A2CC44F56B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Hosting", "Hosting\Hein.Framework.Hosting\Hein.Framework.Hosting.csproj", "{59D43283-904C-4F25-8A91-DB72BE366AC1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Hosting.Tests", "Hosting\Hein.Framework.Hosting.Tests\Hein.Framework.Hosting.Tests.csproj", "{C652A3E4-DDE2-4683-B067-4C3EA7CD4D6F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serialization", "Serialization", "{FDD5E4DC-ED00-47A7-BBA2-16AB1A611017}"
+	ProjectSection(SolutionItems) = preProject
+		Serialization\README.md = Serialization\README.md
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Serialization", "Serialization\Hein.Framework.Serialization\Hein.Framework.Serialization.csproj", "{38B6A763-419B-479F-ACC8-1BEEBC2D4EDD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Serialization.Tests", "Serialization\Hein.Framework.Serialization.Tests\Hein.Framework.Serialization.Tests.csproj", "{45696891-ABE7-4D01-8A75-15EB03F4797C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +174,22 @@ Global
 		{7469388C-CA8B-40D7-96D1-797168A6BB2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7469388C-CA8B-40D7-96D1-797168A6BB2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7469388C-CA8B-40D7-96D1-797168A6BB2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59D43283-904C-4F25-8A91-DB72BE366AC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59D43283-904C-4F25-8A91-DB72BE366AC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59D43283-904C-4F25-8A91-DB72BE366AC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59D43283-904C-4F25-8A91-DB72BE366AC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C652A3E4-DDE2-4683-B067-4C3EA7CD4D6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C652A3E4-DDE2-4683-B067-4C3EA7CD4D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C652A3E4-DDE2-4683-B067-4C3EA7CD4D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C652A3E4-DDE2-4683-B067-4C3EA7CD4D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38B6A763-419B-479F-ACC8-1BEEBC2D4EDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38B6A763-419B-479F-ACC8-1BEEBC2D4EDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38B6A763-419B-479F-ACC8-1BEEBC2D4EDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38B6A763-419B-479F-ACC8-1BEEBC2D4EDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45696891-ABE7-4D01-8A75-15EB03F4797C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45696891-ABE7-4D01-8A75-15EB03F4797C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45696891-ABE7-4D01-8A75-15EB03F4797C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45696891-ABE7-4D01-8A75-15EB03F4797C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -188,6 +219,10 @@ Global
 		{7AFEEAA6-160E-407B-BDF7-95B817F555F9} = {0510CE6B-03B7-4CA2-9BC3-C832728CAD85}
 		{D6A7584B-7A12-478B-A663-E0FCD3F98151} = {D3F6C04A-E5DF-4A60-82BB-A639434F4C3A}
 		{7469388C-CA8B-40D7-96D1-797168A6BB2D} = {D3F6C04A-E5DF-4A60-82BB-A639434F4C3A}
+		{59D43283-904C-4F25-8A91-DB72BE366AC1} = {497DC423-3DFA-40ED-910C-69A2CC44F56B}
+		{C652A3E4-DDE2-4683-B067-4C3EA7CD4D6F} = {497DC423-3DFA-40ED-910C-69A2CC44F56B}
+		{38B6A763-419B-479F-ACC8-1BEEBC2D4EDD} = {FDD5E4DC-ED00-47A7-BBA2-16AB1A611017}
+		{45696891-ABE7-4D01-8A75-15EB03F4797C} = {FDD5E4DC-ED00-47A7-BBA2-16AB1A611017}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {47D420D0-101A-4381-85DD-D979ADA705F1}
