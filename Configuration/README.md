@@ -39,6 +39,6 @@ var section = ConfigurationManager.GetSection("MyCustomSection");
 
 
 ## Prerequisites
-*[Hein.Framework.DependencyInjection](https://github.com/brandonhein/Hein.Framework/tree/master/DependencyInjection)
-*[Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration)
-*[Microsoft.Extensions.Configuration.Json](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json)
+* [Hein.Framework.DependencyInjection](https://github.com/brandonhein/Hein.Framework/tree/master/DependencyInjection)
+* [Microsoft.Extensions.Configuration](https://www.nuget.org/packages/Microsoft.Extensions.Configuration)
+* [Microsoft.Extensions.Configuration.Json](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json)
