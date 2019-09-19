@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.28803.352
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyInjection", "DependencyInjection", "{852A8C1D-0142-45AA-B1D0-BE2CFBCBE792}"
+	ProjectSection(SolutionItems) = preProject
+		DependencyInjection\README.md = DependencyInjection\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{BA928DAA-9E71-43AA-A66B-0AA36E0E8C8A}"
 EndProject
@@ -11,15 +14,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Messaging", "Messaging", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Repository", "Repository", "{9B017A33-BDD6-48C5-839B-CC8F557D3F86}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.DependencyInjection", "DependencyInjection\Hein.Framework.DependencyInjection\Hein.Framework.DependencyInjection.csproj", "{87EA1910-9E02-4D9C-838E-4AF474010152}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.DependencyInjection", "DependencyInjection\Hein.Framework.DependencyInjection\Hein.Framework.DependencyInjection.csproj", "{87EA1910-9E02-4D9C-838E-4AF474010152}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.DependencyInjection.Tests", "DependencyInjection\Hein.Framework.DependencyInjection.Tests\Hein.Framework.DependencyInjection.Tests.csproj", "{DE8DC800-A377-476D-A19B-D41C656FD735}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.DependencyInjection.Tests", "DependencyInjection\Hein.Framework.DependencyInjection.Tests\Hein.Framework.DependencyInjection.Tests.csproj", "{DE8DC800-A377-476D-A19B-D41C656FD735}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQS", "SQS", "{791CDC0C-FD19-4973-BC93-2DFE2583705D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Extensions", "Extensions\Hein.Framework.Extensions\Hein.Framework.Extensions.csproj", "{7963F055-7E7C-4F97-8860-9BA35A89E0A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Extensions", "Extensions\Hein.Framework.Extensions\Hein.Framework.Extensions.csproj", "{7963F055-7E7C-4F97-8860-9BA35A89E0A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Extensions.Tests", "Extensions\Hein.Framework.Extensions.Tests\Hein.Framework.Extensions.Tests.csproj", "{900F114B-F8E6-407F-B5B6-F5A1E8FC3743}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Extensions.Tests", "Extensions\Hein.Framework.Extensions.Tests\Hein.Framework.Extensions.Tests.csproj", "{900F114B-F8E6-407F-B5B6-F5A1E8FC3743}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SNS", "SNS", "{DEB95774-C6BE-4961-AA69-0A550D704EE7}"
 EndProject
@@ -27,45 +30,45 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{187EDE17-9B3
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo", "Dynamo", "{AEBF1AB9-032B-4040-A898-7A7FB16A3678}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Dynamo", "Repository\Dynamo\Hein.Framework.Dynamo\Hein.Framework.Dynamo.csproj", "{70CF8010-C457-4D56-BC7F-FB6636DEF3C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Dynamo", "Repository\Dynamo\Hein.Framework.Dynamo\Hein.Framework.Dynamo.csproj", "{70CF8010-C457-4D56-BC7F-FB6636DEF3C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Dynamo.Tests", "Repository\Dynamo\Hein.Framework.Dynamo.Tests\Hein.Framework.Dynamo.Tests.csproj", "{2B838FAE-C6D7-4602-9DF6-80531DC82703}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Dynamo.Tests", "Repository\Dynamo\Hein.Framework.Dynamo.Tests\Hein.Framework.Dynamo.Tests.csproj", "{2B838FAE-C6D7-4602-9DF6-80531DC82703}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Repository", "Repository\SQL\Hein.Framework.Repository\Hein.Framework.Repository.csproj", "{611A35AB-04DD-4409-BE8D-62E04A8B4D0E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Repository", "Repository\SQL\Hein.Framework.Repository\Hein.Framework.Repository.csproj", "{611A35AB-04DD-4409-BE8D-62E04A8B4D0E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Repository.Tests", "Repository\SQL\Hein.Framework.Repository.Tests\Hein.Framework.Repository.Tests.csproj", "{B7BA7BDE-C650-4FBE-84B2-C3E15B553AD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Repository.Tests", "Repository\SQL\Hein.Framework.Repository.Tests\Hein.Framework.Repository.Tests.csproj", "{B7BA7BDE-C650-4FBE-84B2-C3E15B553AD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Messaging.SQS", "Messaging\SQS\Hein.Framework.Messaging.SQS\Hein.Framework.Messaging.SQS.csproj", "{0ABB402D-7CA2-49A7-90D1-662BD19F0F94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Messaging.SQS", "Messaging\SQS\Hein.Framework.Messaging.SQS\Hein.Framework.Messaging.SQS.csproj", "{0ABB402D-7CA2-49A7-90D1-662BD19F0F94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Messaging.SQS.Tests", "Messaging\SQS\Hein.Framework.Messaging.SQS.Tests\Hein.Framework.Messaging.SQS.Tests.csproj", "{16E66118-A669-4EB1-98B6-9EABA04691B0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Messaging.SQS.Tests", "Messaging\SQS\Hein.Framework.Messaging.SQS.Tests\Hein.Framework.Messaging.SQS.Tests.csproj", "{16E66118-A669-4EB1-98B6-9EABA04691B0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Messaging.SNS", "Messaging\SNS\Hein.Framework.Messaging.SNS\Hein.Framework.Messaging.SNS.csproj", "{72A8A912-EE74-4D70-8C99-66E77557945E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Messaging.SNS", "Messaging\SNS\Hein.Framework.Messaging.SNS\Hein.Framework.Messaging.SNS.csproj", "{72A8A912-EE74-4D70-8C99-66E77557945E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Messaging.SNS.Tests", "Messaging\SNS\Hein.Framework.Messaging.SNS.Tests\Hein.Framework.Messaging.SNS.Tests.csproj", "{FD13EA16-031D-465A-81AF-FB486653B2FD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Messaging.SNS.Tests", "Messaging\SNS\Hein.Framework.Messaging.SNS.Tests\Hein.Framework.Messaging.SNS.Tests.csproj", "{FD13EA16-031D-465A-81AF-FB486653B2FD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Http", "Http", "{E1B0CADE-338E-4293-9DAE-43A38FFF173F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Http", "Http\Hein.Framework.Http\Hein.Framework.Http.csproj", "{D40D09B4-50E5-4BA7-853D-86B1B1D7DBFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Http", "Http\Hein.Framework.Http\Hein.Framework.Http.csproj", "{D40D09B4-50E5-4BA7-853D-86B1B1D7DBFE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Http.Tests", "Http\Hein.Framework.Http.Tests\Hein.Framework.Http.Tests.csproj", "{8383423C-C12B-432C-8F73-CCD8FD46CB6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Http.Tests", "Http\Hein.Framework.Http.Tests\Hein.Framework.Http.Tests.csproj", "{8383423C-C12B-432C-8F73-CCD8FD46CB6A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UnitTestHelper", "UnitTestHelper", "{2DCD2D5F-642D-4440-835A-3973D0072CE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.UnitTestHelper", "UnitTestHelper\Hein.Framework.UnitTestHelper\Hein.Framework.UnitTestHelper.csproj", "{A409B338-F7A8-455B-A894-D2167C6C3907}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.UnitTestHelper", "UnitTestHelper\Hein.Framework.UnitTestHelper\Hein.Framework.UnitTestHelper.csproj", "{A409B338-F7A8-455B-A894-D2167C6C3907}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.UnitTestHelper.Tests", "UnitTestHelper\Hein.Framework.UnitTestHelper.Tests\Hein.Framework.UnitTestHelper.Tests.csproj", "{A35B821C-2799-447E-A63E-5FA211A71E1E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.UnitTestHelper.Tests", "UnitTestHelper\Hein.Framework.UnitTestHelper.Tests\Hein.Framework.UnitTestHelper.Tests.csproj", "{A35B821C-2799-447E-A63E-5FA211A71E1E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{0510CE6B-03B7-4CA2-9BC3-C832728CAD85}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Configuration", "Configuration\Hein.Framework.Configuration\Hein.Framework.Configuration.csproj", "{9AD25863-788F-4CCC-8E30-84070A05627A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Configuration", "Configuration\Hein.Framework.Configuration\Hein.Framework.Configuration.csproj", "{9AD25863-788F-4CCC-8E30-84070A05627A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Configuration.Tests", "Configuration\Hein.Framework.Configuration.Tests\Hein.Framework.Configuration.Tests.csproj", "{7AFEEAA6-160E-407B-BDF7-95B817F555F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Configuration.Tests", "Configuration\Hein.Framework.Configuration.Tests\Hein.Framework.Configuration.Tests.csproj", "{7AFEEAA6-160E-407B-BDF7-95B817F555F9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logging", "Logging", "{D3F6C04A-E5DF-4A60-82BB-A639434F4C3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Logging", "Logging\Hein.Framework.Logging\Hein.Framework.Logging.csproj", "{D6A7584B-7A12-478B-A663-E0FCD3F98151}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Logging", "Logging\Hein.Framework.Logging\Hein.Framework.Logging.csproj", "{D6A7584B-7A12-478B-A663-E0FCD3F98151}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Logging.Tests", "Logging\Hein.Framework.Logging.Tests\Hein.Framework.Logging.Tests.csproj", "{7469388C-CA8B-40D7-96D1-797168A6BB2D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Logging.Tests", "Logging\Hein.Framework.Logging.Tests\Hein.Framework.Logging.Tests.csproj", "{7469388C-CA8B-40D7-96D1-797168A6BB2D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
