@@ -59,6 +59,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.UnitTestHelper.Tests", "UnitTestHelper\Hein.Framework.UnitTestHelper.Tests\Hein.Framework.UnitTestHelper.Tests.csproj", "{A35B821C-2799-447E-A63E-5FA211A71E1E}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Configuration", "Configuration", "{0510CE6B-03B7-4CA2-9BC3-C832728CAD85}"
+	ProjectSection(SolutionItems) = preProject
+		Configuration\README.md = Configuration\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Configuration", "Configuration\Hein.Framework.Configuration\Hein.Framework.Configuration.csproj", "{9AD25863-788F-4CCC-8E30-84070A05627A}"
 EndProject
