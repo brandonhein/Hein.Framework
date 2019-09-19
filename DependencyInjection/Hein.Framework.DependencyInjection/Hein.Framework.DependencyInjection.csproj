@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/DependancyInjection</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/DependancyInjection</RepositoryUrl>
+    <Description>ServiceLocator implementation that leverages Microsoft.Extensions.DependencyInjection IServiceCollection and ServiceProvider in a way that can be called anywhere in an application</Description>
   </PropertyGroup>
 
   <ItemGroup>

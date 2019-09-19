@@ -30,7 +30,7 @@ namespace Hein.Framework.DependencyInjection
                 return _provider.GetService<T>();
             }
 
-            return default(T);
+            throw new ServiceLocatorNotBuiltException();
         }
     }
 }
