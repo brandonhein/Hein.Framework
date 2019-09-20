@@ -1,10 +1,14 @@
 # Hein.Framework
-Simple place to show case some libraries and demos for personal home projects.  Challenging my skills, and figuring out how some NuGets and other common libraries work.  
+Central spot where all my application framework code lives.  I got really tired of porting the same classes and files to a new application I'm building.  So I decided to make them public and in NuGet.  This is also a great place to show off some of my work.
 
 Always a work in progress :smile:
 
-## Showcases
-- Custom Repository Framework for SQL [[View Here]](https://github.com/brandonhein/Hein.Framework/tree/master/Repository#heinframeworkrepository-for-sql-database-usage)
-- Custom Repository Framework for Dynamo [[View Here]](https://github.com/brandonhein/Hein.Framework/tree/master/Repository#heinframeworkdynamo-for-aws-dynamodb-database-usage)
-- Custom Dependancy Injection Framework [[View Here]](https://github.com/brandonhein/Hein.Framework/tree/master/DependancyInjection#heinframeworkdependancyinjection)
-- Custom AWS Simple Queue Service Messaging [[View Here]](https://github.com/brandonhein/Hein.Framework/tree/master/Messaging/SQS#heinframeworkmessagingsqs-for-amazon-simple-queue-service-usage)
+| Name | Purpose | Version |  |  
+| --- | --- | --- | --- |   
+| Hein.Framework.Configuration | Package that enables a `ConfigurationManager` to be used for .net core apps | [1.0.0](https://www.nuget.org/packages/Hein.Framework.Configuration/1.0.0) | [ReadMe](https://github.com/brandonhein/Hein.Framework/tree/master/Configuration#heinframeworkconfiguration) |  
+| Hein.Framework.DependencyInjection | Package that creates a `ServiceLocator` class and leverages Microsofts DI.  You can use this DI anywhere in your app! Perfect for Windows Services and Lambdas | [1.0.0](https://www.nuget.org/packages/Hein.Framework.DependencyInjection/1.0.0) | [ReadMe](https://github.com/brandonhein/Hein.Framework/tree/master/DependencyInjection#heinframeworkdependencyinjection) | 
+| Hein.Framework.Extensions | Package that showcases my favorite and heavily used extensions in my projects | [1.0.0](https://www.nuget.org/packages/Hein.Framework.Extensions/1.0.0) | ReadMe |
+| Hein.Framework.Http | Package that I use for API integration | [1.0.0](https://www.nuget.org/packages/Hein.Framework.Http/1.0.0) | [ReadMe](https://github.com/brandonhein/Hein.Framework/tree/master/Http#heinframeworkhttp) |
+| Hein.Framework.Dynamo | Package that creates an NHibernate `QueryOver` look for querying and getting data from AWS DynamoDB Table.  Treats a Dynamo Table like an Entity in Entity Framework | [1.0.0](https://www.nuget.org/packages/Hein.Framework.Dynamo/1.0.0) | [ReadMe](https://github.com/brandonhein/Hein.Framework/tree/master/Repository/Dynamo#heinframeworkdynamo-for-aws-dynamodb-database-usage) |
+| Hein.Framework.Repository | Package that creates an NHibernate `QueryOver` look for querying and getting data from a SQL database.  Instead of creating NHibernate Mappings it uses Reflection to analyze that Model/Entity and creates SQL Select/Insert/Update/Delete commands.  Then uses Dapper to execute those commands. | [1.0.2](https://www.nuget.org/packages/Hein.Framework.Repository/1.0.2) | [ReadMe](https://github.com/brandonhein/Hein.Framework/tree/master/Repository/SQL#heinframeworkrepository-for-sql-database-usage) |
+| Hein.Framework.Serialization | What 'framework' doesn't have a Serialization package? Has my commonly utilized extensions I like to use.  It also has some SOAP serialization for fun | [1.1.0](https://www.nuget.org/packages/Hein.Framework.Serialization/1.1.0) | [ReadMe](https://github.com/brandonhein/Hein.Framework/tree/master/Serialization#heinframeworkserialization) |
