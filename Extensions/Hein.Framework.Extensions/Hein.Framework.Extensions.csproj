@@ -1,7 +1,12 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <Description>Extension package of my favorite and commonly used extensions while developing</Description>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Extensions</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Extensions</RepositoryUrl>
   </PropertyGroup>
 
 </Project>
