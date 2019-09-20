@@ -1,7 +1,17 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <Version>1.0.2</Version>
+    <Description>Repository package used for SQL database access and transactions.  Custom package using Dapper to make it look and feel like NHibernate QueryOver</Description>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Repository/SQL</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Repository/SQL</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="1.60.6" />
+  </ItemGroup>
 
 </Project>

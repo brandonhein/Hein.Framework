@@ -27,6 +27,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SNS", "SNS", "{DEB95774-C6BE-4961-AA69-0A550D704EE7}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{187EDE17-9B34-4808-A1AF-1305B51836D1}"
+	ProjectSection(SolutionItems) = preProject
+		Repository\SQL\README.md = Repository\SQL\README.md
+	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo", "Dynamo", "{AEBF1AB9-032B-4040-A898-7A7FB16A3678}"
 	ProjectSection(SolutionItems) = preProject
