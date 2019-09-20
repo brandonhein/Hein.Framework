@@ -29,6 +29,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL", "SQL", "{187EDE17-9B34-4808-A1AF-1305B51836D1}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dynamo", "Dynamo", "{AEBF1AB9-032B-4040-A898-7A7FB16A3678}"
+	ProjectSection(SolutionItems) = preProject
+		Repository\Dynamo\README.md = Repository\Dynamo\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Dynamo", "Repository\Dynamo\Hein.Framework.Dynamo\Hein.Framework.Dynamo.csproj", "{70CF8010-C457-4D56-BC7F-FB6636DEF3C1}"
 EndProject

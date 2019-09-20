@@ -17,8 +17,7 @@ namespace Hein.Framework.Http.Tests
                 Headers = new Dictionary<string, string>()
                 {
                     { "x-api-key", "my-access-key" }
-                },
-                d
+                }
             };
 
             var result = service.New(request).Response();
