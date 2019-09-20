@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <Description>HTTP library useful for executing API calls</Description>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Http</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Http</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>

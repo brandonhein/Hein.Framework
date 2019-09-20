@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <Company>brandonhein</Company>
+    <Description>Every framework has a serialization library/package.  So does this one.  Features ToJson, ToXml, ToSoapXml extensions. Along with easy to implement deserialization usages.</Description>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Serialization</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Serialization</RepositoryUrl>
+    <Version>1.1.0</Version>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+  </ItemGroup>
+
+</Project>
