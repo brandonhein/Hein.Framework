@@ -7,5 +7,8 @@
         public const string TextXml = "text/xml";
         public const string Text = "text/plain";
         public const string UrlEncode = "application/x-www-form-urlencoded";
+        public const string Css = "text/css";
+        public const string Javascript = "application/javascript";
+        public const string Jpeg = "image/jpeg";
     }
 }

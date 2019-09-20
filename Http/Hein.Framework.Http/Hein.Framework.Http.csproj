@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <Description>HTTP library useful for executing API calls</Description>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Http</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Http</RepositoryUrl>
   </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Hein.Framework.Serialization" Version="1.1.0" />
-  </ItemGroup>
 
 </Project>

@@ -47,6 +47,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Messaging.SNS.Tests", "Messaging\SNS\Hein.Framework.Messaging.SNS.Tests\Hein.Framework.Messaging.SNS.Tests.csproj", "{FD13EA16-031D-465A-81AF-FB486653B2FD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Http", "Http", "{E1B0CADE-338E-4293-9DAE-43A38FFF173F}"
+	ProjectSection(SolutionItems) = preProject
+		Http\README.md = Http\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Http", "Http\Hein.Framework.Http\Hein.Framework.Http.csproj", "{D40D09B4-50E5-4BA7-853D-86B1B1D7DBFE}"
 EndProject
@@ -75,18 +78,18 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Logging.Test
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{497DC423-3DFA-40ED-910C-69A2CC44F56B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Hosting", "Hosting\Hein.Framework.Hosting\Hein.Framework.Hosting.csproj", "{59D43283-904C-4F25-8A91-DB72BE366AC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Hosting", "Hosting\Hein.Framework.Hosting\Hein.Framework.Hosting.csproj", "{59D43283-904C-4F25-8A91-DB72BE366AC1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Hosting.Tests", "Hosting\Hein.Framework.Hosting.Tests\Hein.Framework.Hosting.Tests.csproj", "{C652A3E4-DDE2-4683-B067-4C3EA7CD4D6F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Hosting.Tests", "Hosting\Hein.Framework.Hosting.Tests\Hein.Framework.Hosting.Tests.csproj", "{C652A3E4-DDE2-4683-B067-4C3EA7CD4D6F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Serialization", "Serialization", "{FDD5E4DC-ED00-47A7-BBA2-16AB1A611017}"
 	ProjectSection(SolutionItems) = preProject
 		Serialization\README.md = Serialization\README.md
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Serialization", "Serialization\Hein.Framework.Serialization\Hein.Framework.Serialization.csproj", "{38B6A763-419B-479F-ACC8-1BEEBC2D4EDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Serialization", "Serialization\Hein.Framework.Serialization\Hein.Framework.Serialization.csproj", "{38B6A763-419B-479F-ACC8-1BEEBC2D4EDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hein.Framework.Serialization.Tests", "Serialization\Hein.Framework.Serialization.Tests\Hein.Framework.Serialization.Tests.csproj", "{45696891-ABE7-4D01-8A75-15EB03F4797C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Serialization.Tests", "Serialization\Hein.Framework.Serialization.Tests\Hein.Framework.Serialization.Tests.csproj", "{45696891-ABE7-4D01-8A75-15EB03F4797C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
