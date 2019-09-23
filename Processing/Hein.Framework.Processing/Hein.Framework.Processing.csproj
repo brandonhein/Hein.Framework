@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <Description>Package to help step up 'steps' that applies specific logic to a process context and execute on those steps</Description>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Processing</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Processing</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>
