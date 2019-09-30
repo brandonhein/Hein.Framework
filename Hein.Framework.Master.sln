@@ -83,6 +83,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Logging.Tests", "Logging\Hein.Framework.Logging.Tests\Hein.Framework.Logging.Tests.csproj", "{7469388C-CA8B-40D7-96D1-797168A6BB2D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Hosting", "Hosting", "{497DC423-3DFA-40ED-910C-69A2CC44F56B}"
+	ProjectSection(SolutionItems) = preProject
+		Hosting\README.md = Hosting\README.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.Hosting", "Hosting\Hein.Framework.Hosting\Hein.Framework.Hosting.csproj", "{59D43283-904C-4F25-8A91-DB72BE366AC1}"
 EndProject
