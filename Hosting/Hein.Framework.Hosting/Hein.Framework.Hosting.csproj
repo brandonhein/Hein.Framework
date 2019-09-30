@@ -5,8 +5,8 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>brandonhein</Authors>
     <Description>Helper package to help you Host a Windows Background Service, making the Program and Startup look similar to the ASP.NET startup code.</Description>
-    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Configuration</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Configuration</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Hosting</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Hosting</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>

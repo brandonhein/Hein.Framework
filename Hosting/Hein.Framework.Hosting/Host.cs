@@ -24,6 +24,18 @@ namespace Hein.Framework.Hosting
 
             host.ConfigureAppConfiguration((hostContext, config) =>
             {
+                hostContext.HostingEnvironment.ApplicationName = 
+                    hostContext.HostingEnvironment.ApplicationName ?? AppDomain.CurrentDomain.FriendlyName;
+
+                Console.WriteLine("Application: " + hostContext.HostingEnvironment.ApplicationName);
+                Console.WriteLine("================================================");
+
+                hostContext.HostingEnvironment.EnvironmentName = 
+                    Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ??
+                    Environment.GetEnvironmentVariable("NETCORE_ENVIRONMENT") ??
+                    Environment.GetEnvironmentVariable("ENVIRONMENT") ?? 
+                    "Dev";
+
                 var constructors = typeof(T).GetConstructors();
                 foreach (var info in constructors)
                 {
