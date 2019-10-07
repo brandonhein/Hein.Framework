@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <Description>Package that contains the main base packages.  Config, DI, Extensions, Http, Processing, and Serialization</Description>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework</RepositoryUrl>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Hein.Framework.Configuration" Version="1.0.0" />
+    <PackageReference Include="Hein.Framework.DependencyInjection" Version="1.0.0" />
+    <PackageReference Include="Hein.Framework.Extensions" Version="1.0.0" />
+    <PackageReference Include="Hein.Framework.Http" Version="1.0.0" />
+    <PackageReference Include="Hein.Framework.Processing" Version="1.0.0" />
+    <PackageReference Include="Hein.Framework.Serialization" Version="1.1.0" />
+  </ItemGroup>
+
+</Project>
