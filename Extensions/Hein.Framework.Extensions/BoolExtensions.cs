@@ -18,6 +18,11 @@
             return retVal;
         }
 
+        public static string ToTF(this bool val)
+        {
+            return val ? "T" : "F";
+        }
+
         public static int ToOneZero(this bool val)
         {
             return val ? 1 : 0;
