@@ -5,6 +5,7 @@ Always a work in progress :smile:
 
 | Name | Purpose | Version |  |  
 | --- | --- | --- | --- |   
+| Hein.Framework.All | Package that contains all base packages like Config, DI, Extensions, Http, Processing, and Serialization | ![NuGet](https://img.shields.io/nuget/v/Hein.Framework.All.svg?style=flat-square&label=nuget) | ReadMe |  
 | Hein.Framework.Configuration | Package that enables a `ConfigurationManager` to be used for .net core apps | ![NuGet](https://img.shields.io/nuget/v/Hein.Framework.Configuration.svg?style=flat-square&label=nuget) | [ReadMe](https://github.com/brandonhein/Hein.Framework/tree/master/Configuration#heinframeworkconfiguration) |  
 | Hein.Framework.DependencyInjection | Package that creates a `ServiceLocator` class and leverages Microsofts DI.  You can use this DI anywhere in your app! Perfect for Windows Services and Lambdas | ![NuGet](https://img.shields.io/nuget/v/Hein.Framework.DependencyInjection.svg?style=flat-square&label=nuget) | [ReadMe](https://github.com/brandonhein/Hein.Framework/tree/master/DependencyInjection#heinframeworkdependencyinjection) | 
 | Hein.Framework.Extensions | Package that showcases my favorite and heavily used extensions in my projects | ![NuGet](https://img.shields.io/nuget/v/Hein.Framework.Extensions.svg?style=flat-square&label=nuget) | ReadMe |   
