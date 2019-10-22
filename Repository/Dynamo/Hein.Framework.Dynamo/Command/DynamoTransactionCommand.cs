@@ -1,10 +1,8 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Hein.Framework.Dynamo.Criterion;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Hein.Framework.Dynamo.Command
 {
@@ -80,6 +78,8 @@ namespace Hein.Framework.Dynamo.Command
                     TableName = typeof(T).DynamoTableName(),
                     Key = _item.GetKey()
                 };
+
+                return request;
             }
 
             return null;
