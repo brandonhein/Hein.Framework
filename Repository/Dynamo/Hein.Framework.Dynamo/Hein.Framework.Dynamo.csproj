@@ -7,7 +7,7 @@
     <Description>Cool library/package that uses QueryOver to create a Dynamo Query request on an aws dynamodb table</Description>
     <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Repository/Dynamo</PackageProjectUrl>
     <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Repository/Dynamo</RepositoryUrl>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <ItemGroup>
