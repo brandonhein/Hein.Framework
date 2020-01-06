@@ -13,8 +13,7 @@ namespace Hein.Framework.Dynamo.Criterion
         IQueryCriteria<T> Distinct();
         IQueryCriteria<T> Top(int max);
         IQueryCriteria<T> Where(Expression<Func<T, bool>> filter);
-        IQueryCriteria<T> OrderBy(Expression<Func<T, object>> orderBy);
-        IQueryCriteria<T> OrderByDesending(Expression<Func<T, object>> orderBy);
+        IQueryCriteria<T> OrderByDesending();
     }
 
     public class QueryCriteria<T> : DynamoQueryCollection, IQueryCriteria<T>
@@ -79,22 +78,12 @@ namespace Hein.Framework.Dynamo.Criterion
             _queryRequest.ExpressionAttributeValues = ExpressionHelper.ConvertExpressionValues(filter, ref expressionString);
             _queryRequest.FilterExpression = expressionString.ToString();
 
-
             return this;
         }
 
-        public IQueryCriteria<T> OrderBy(Expression<Func<T, object>> orderBy)
+        public IQueryCriteria<T> OrderByDesending()
         {
-            return OrderBy(orderBy, OrderByType.Asc);
-        }
-
-        public IQueryCriteria<T> OrderByDesending(Expression<Func<T, object>> orderBy)
-        {
-            return OrderBy(orderBy, OrderByType.Desc);
-        }
-
-        private IQueryCriteria<T> OrderBy(Expression<Func<T, object>> orderBy, OrderByType type)
-        {
+            _queryRequest.ScanIndexForward = false;
             return this;
         }
     }
