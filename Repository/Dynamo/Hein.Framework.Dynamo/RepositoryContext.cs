@@ -63,14 +63,40 @@ namespace Hein.Framework.Dynamo
                 //should throw?
             }
 
+            if (_transactionItems.Any())
+            {
+                //only process 25 at a time: https://docs.aws.amazon.com/amazondynamodb/latest/APIReference/API_TransactWriteItems.html
+                var batch = new List<TransactWriteItem>();
+                foreach (var tranItem in _transactionItems)
+                {
+                    batch.Add(tranItem);
+
+                    if (batch.Count == 25)
+                    {
+                        BatchDynamo(batch);
+                        batch.Clear();
+                    }
+                }
+
+                // Process last batch
+                if (batch.Any())
+                {
+                    BatchDynamo(batch);
+                }
+
+                Flush();
+            }
+        }
+
+        private void BatchDynamo(List<TransactWriteItem> items)
+        {
             var trans = new TransactWriteItemsRequest()
             {
-                TransactItems = _transactionItems,
+                TransactItems = items,
                 ReturnConsumedCapacity = ReturnConsumedCapacity.TOTAL
             };
 
             var response = base.GetDynamo().TransactWriteItemsAsync(trans).Result;
-            Flush();
         }
 
         public void Rollback()
@@ -80,12 +106,12 @@ namespace Hein.Framework.Dynamo
 
         private void Flush()
         {
-            _transactionItems = null;
+            _transactionItems = new List<TransactWriteItem>();
         }
 
         public void Dispose()
         {
-            if (_transactionItems != null)
+            if (_transactionItems != null && !_transactionItems.Any())
             {
                 Commit();
             }
