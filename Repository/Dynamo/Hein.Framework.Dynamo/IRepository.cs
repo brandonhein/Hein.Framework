@@ -12,8 +12,5 @@ namespace Hein.Framework.Dynamo
 
         IEnumerable<T> GetAll();
         IEnumerable<T> Find(IQueryCriteria<T> query);
-
-        void Commit();
-        void Rollback();
     }
 }

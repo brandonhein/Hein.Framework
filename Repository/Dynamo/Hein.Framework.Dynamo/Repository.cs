@@ -22,15 +22,5 @@ namespace Hein.Framework.Dynamo
 
         public abstract T Save(T entity);
         public abstract void Delete(T entity);
-
-        public void Commit()
-        {
-            Context.Commit();
-        }
-
-        public void Rollback()
-        {
-            Context.Rollback();
-        }
     }
 }
