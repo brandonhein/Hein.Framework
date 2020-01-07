@@ -31,6 +31,15 @@ namespace Hein.Framework.Http
                     }
                 }
 
+                if (_parameters.Timeout <= 0)
+                {
+                    webRequest.Timeout = 30000;
+                }
+                else
+                {
+                    webRequest.Timeout = _parameters.Timeout;
+                }
+
                 //ran thru post man to see what ones are eligible to contain a body
                 if (_parameters.Method == HttpMethod.Post ||
                     _parameters.Method == HttpMethod.Put ||

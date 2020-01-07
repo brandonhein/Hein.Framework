@@ -140,5 +140,6 @@ namespace Hein.Framework.Http
         public string Accept { get; set; }
         public string ContentType { get; set; }
         public string RequestBody { get; set; }
+        public int Timeout { get; set; }
     }
 }
