@@ -13,7 +13,9 @@ namespace Hein.Framework.Dynamo
         private List<TransactWriteItem> _transactionItems;
 
         public RepositoryContext(RegionEndpoint endpoint) : base(endpoint)
-        { }
+        {
+            _transactionItems = new List<TransactWriteItem>();
+        }
 
         public bool IsTranactionOpen { get; private set; }
 
