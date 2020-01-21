@@ -10,7 +10,10 @@ namespace Hein.Framework.Http
 
             foreach (var piece in pieces)
             {
-                pieceList.Add(piece.Trim().TrimEnd('/').TrimStart('/').Trim());
+                if (!string.IsNullOrEmpty(piece))
+                {
+                    pieceList.Add(piece.Trim().TrimEnd('/').TrimStart('/').Trim());
+                }
             }
 
             return string.Join("/", pieceList);
