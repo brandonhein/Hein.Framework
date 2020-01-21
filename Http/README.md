@@ -17,7 +17,7 @@ var request = new ApiRequest()
   },
   QueryParameters = new Dictionary<string, string>()
   {
-    { "queryKey", "queryValue"
+    { "queryKey", "queryValue" }
   }
   Body = "your json/data here"
 };
