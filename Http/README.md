@@ -34,3 +34,16 @@ var service = new ApiService();
 
 var response = service.Execute(request);
 var response = await service.ExecuteAsync(request);
+```
+
+### Dependency Injection
+The `ApiService` leverages the interface `IApiService`.  So if your functionality, provider, or service is dependant on an API call, pass the `IApiService` thru by wiring it up in your service collection/ioc.
+
+```csharp
+// This method gets called by the runtime. Use this method to add services to the container.
+public void ConfigureServices(IServiceCollection services)
+{
+   services.AddSingleton<IApiService>(s => new ApiService());
+   services.AddTransient<IExternalIntegrationProvider>(s => new ExternalIntegrationProvider(new ApiService()));
+}
+```
