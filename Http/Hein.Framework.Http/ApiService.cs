@@ -1,87 +1,76 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.IO;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace Hein.Framework.Http
 {
     public class ApiService : ApiServiceBase, IApiService
     {
-        public ApiService()
-        { }
-
-        public ApiService(string url)
+        public async Task<ApiResponse> ExecuteAsync(ApiRequest request)
         {
-            _parameters = new ApiRequest(url);
-        }
-
-        public ApiService(string url, IDictionary<string, string> headers)
-        {
-            _parameters = new ApiRequest(url, headers);
-        }
-
-        public ApiService(string url, string accept, IDictionary<string, string> headers)
-        {
-            _parameters = new ApiRequest(url, HttpMethod.Get, accept, headers);
-        }
-
-        public ApiService(ApiRequest parameters)
-        {
-            _parameters = parameters;
-        }
-
-        /// <summary>
-        /// Clones the implementation of the interface to run thru a new API call
-        /// </summary>
-        public IApiService New(ApiRequest request)
-        {
-            return new ApiService(request);
-        }
-
-        /// <summary>
-        /// Will Execute an asynchronous HTTP API Call and only return the body of the response
-        /// </summary>
-        public Task<string> ExecuteAsync()
-        {
-            return Task.Run(() =>
+            try
             {
-                Response();
-                return _responseString;
-            });
-        }
+                var webRequest = GenerateWebRequest(request);
 
-        /// <summary>
-        /// Will Execute an synchronous HTTP API Call and only return the body of the response
-        /// </summary>
-        public string Execute()
-        {
-            return ExecuteAsync().Result;
-        }
+                if (IsWriteableMethod(request.Method))
+                {
+                    using (var stream = new StreamWriter(await webRequest.GetRequestStreamAsync()))
+                    {
+                        await stream.WriteAsync(request.Body);
+                        await stream.FlushAsync();
+                        stream.Close();
+                    }
+                }
 
-        /// <summary>
-        /// Will Execute an asynchronous HTTP API Call and only return body, status, headers, and content type
-        /// </summary>
-        public Task<ApiResponse> ResponseAsync()
-        {
-            return Task.Run(() =>
+                return await GetResultAsync(await webRequest.GetResponseAsync());
+            }
+            catch (WebException ex)
             {
-                var response = new ApiResponse();
+                if (ex.Response != null)
+                {
+                    return await GetResultAsync(ex.Response);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse(ex);
+            }
 
-                base.ExecuteCall();
-
-                response.ResponseCode = _statusCode;
-                response.ContentType = _contentType;
-                response.ResponseString = _responseString;
-                response.Headers = _responseHeaders;
-
-                return response;
-            });
+            return new ApiResponse(new Exception("no exception caught"));
         }
 
-        /// <summary>
-        /// Will Execute an synchronous HTTP API Call and only return body, status, headers, and content type
-        /// </summary>
-        public ApiResponse Response()
+        public ApiResponse Execute(ApiRequest request)
         {
-            return ResponseAsync().Result;
+            try
+            {
+                var webRequest = GenerateWebRequest(request);
+
+                if (IsWriteableMethod(request.Method))
+                {
+                    using (var stream = new StreamWriter(webRequest.GetRequestStream()))
+                    {
+                        stream.Write(request.Body);
+                        stream.Flush();
+                        stream.Close();
+                    }
+                }
+
+                return GetResult(webRequest.GetResponse());
+            }
+            catch (WebException ex)
+            {
+                if (ex.Response != null)
+                {
+                    return GetResult(ex.Response);
+                }
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse(ex);
+            }
+
+            return new ApiResponse(new Exception("no exception caught"));
         }
     }
 }

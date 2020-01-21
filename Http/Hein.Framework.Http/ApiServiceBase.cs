@@ -1,103 +1,114 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace Hein.Framework.Http
 {
     public class ApiServiceBase
     {
-        protected Dictionary<string, string> _responseHeaders;
-        protected string _contentType = HttpContentType.Text;
-        protected string _responseString;
-        protected HttpStatusCode _statusCode;
+        protected ApiServiceBase()
+        { }
 
-        protected ApiRequest _parameters;
-
-        protected void ExecuteCall()
+        protected ApiResponse GetResult(WebResponse response)
         {
-            try
-            {
-                var webRequest = (HttpWebRequest)WebRequest.Create(_parameters.Url);
-                webRequest.Method = _parameters.Method.ToString().ToUpper();
-                webRequest.ContentType = _parameters.ContentType;
-                webRequest.Accept = _parameters.Accept;
-                if (_parameters.Headers != null && _parameters.Headers.Count > 0)
-                {
-                    foreach (var header in _parameters.Headers)
-                    {
-                        webRequest.Headers.Add(header.Key, header.Value);
-                    }
-                }
+            string responseString;
+            string contentType;
+            HttpStatusCode statusCode;
+            IDictionary<string, string> responseHeaders = null;
 
-                if (_parameters.Timeout <= 0)
-                {
-                    webRequest.Timeout = 30000;
-                }
-                else
-                {
-                    webRequest.Timeout = _parameters.Timeout;
-                }
-
-                //ran thru post man to see what ones are eligible to contain a body
-                if (_parameters.Method == HttpMethod.Post ||
-                    _parameters.Method == HttpMethod.Put ||
-                    _parameters.Method == HttpMethod.Patch ||
-                    _parameters.Method == HttpMethod.Delete ||
-                    _parameters.Method == HttpMethod.Options ||
-                    _parameters.Method == HttpMethod.Link ||
-                    _parameters.Method == HttpMethod.Unlink ||
-                    _parameters.Method == HttpMethod.Lock ||
-                    _parameters.Method == HttpMethod.Propfind ||
-                    _parameters.Method == HttpMethod.View)
-                {
-                    using (var stream = new StreamWriter(webRequest.GetRequestStream()))
-                    {
-                        stream.Write(_parameters.RequestBody);
-                        stream.Flush();
-                        stream.Close();
-                    }
-                }
-
-                _responseHeaders = new Dictionary<string, string>();
-                this.GetResponse(webRequest.GetResponse());
-            }
-            catch (WebException ex)
+            using (var httpResponse = (HttpWebResponse)response)
+            using (var reader = new StreamReader(httpResponse.GetResponseStream()))
             {
-                if (ex.Response != null)
-                {
-                    this.GetResponse(ex.Response);
-                }
-            }
-            catch (Exception ex)
-            {
-                _responseHeaders = new Dictionary<string, string>();
-                _responseString = string.Concat("ApiServiceBase-Error: ", ex.Message);
-                _contentType = HttpContentType.Text;
-                _statusCode = HttpStatusCode.InternalServerError;
-            }
-        }
-
-        private void GetResponse(WebResponse response)
-        {
-            var httpResponse = (HttpWebResponse)response;
-            using (var reader = new StreamReader(response.GetResponseStream()))
-            {
-                var headerKeys = response.Headers.AllKeys;
+                var headerKeys = httpResponse.Headers.AllKeys;
                 if (headerKeys != null && headerKeys.Any())
                 {
+                    responseHeaders = new Dictionary<string, string>();
                     foreach (var key in headerKeys)
                     {
                         var value = response.Headers[key];
-                        _responseHeaders.Add(key, value);
+                        responseHeaders.Add(key, value);
                     }
                 }
 
-                _responseString = reader.ReadToEnd();
-                _contentType = httpResponse.ContentType;
-                _statusCode = httpResponse.StatusCode;
+                responseString = reader.ReadToEnd();
+                contentType = httpResponse.ContentType;
+                statusCode = httpResponse.StatusCode;
             }
+
+            return new ApiResponse(responseString, contentType, responseHeaders, statusCode);
+        }
+
+        protected async Task<ApiResponse> GetResultAsync(WebResponse response)
+        {
+            string responseString;
+            string contentType;
+            HttpStatusCode statusCode;
+            IDictionary<string, string> responseHeaders = null;
+
+            using (var httpResponse = (HttpWebResponse)response)
+            using (var reader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var headerKeys = httpResponse.Headers.AllKeys;
+                if (headerKeys != null && headerKeys.Any())
+                {
+                    responseHeaders = new Dictionary<string, string>();
+                    foreach (var key in headerKeys)
+                    {
+                        var value = response.Headers[key];
+                        responseHeaders.Add(key, value);
+                    }
+                }
+
+                responseString = await reader.ReadToEndAsync();
+                contentType = httpResponse.ContentType;
+                statusCode = httpResponse.StatusCode;
+            }
+
+            return new ApiResponse(responseString, contentType, responseHeaders, statusCode);
+        }
+
+        protected bool IsWriteableMethod(HttpMethod method)
+        {
+            return method == HttpMethod.Post || method == HttpMethod.Put ||
+                   method == HttpMethod.Patch || method == HttpMethod.Delete ||
+                   method == HttpMethod.Options || method == HttpMethod.Link ||
+                   method == HttpMethod.Unlink || method == HttpMethod.Lock ||
+                   method == HttpMethod.Propfind || method == HttpMethod.View;
+        }
+
+        protected HttpWebRequest GenerateWebRequest(ApiRequest request)
+        {
+            var url = Url.Combine(request.BaseUrl, request.Path);
+
+            if (request.QueryParameters != null && request.QueryParameters.Any())
+            {
+                url = string.Concat(url, "?", request.QueryParameters.ToUrlEncode());
+            }
+
+            var webRequest = (HttpWebRequest)WebRequest.Create(url);
+            webRequest.Method = request.Method.ToString().ToUpper();
+            webRequest.ContentType = request.ContentType;
+            webRequest.Accept = request.Accept;
+            if (request.Headers != null && request.Headers.Any())
+            {
+                foreach (var header in request.Headers)
+                {
+                    webRequest.Headers.Add(header.Key, header.Value);
+                }
+            }
+
+            if (request.Timeout <= 0)
+            {
+                webRequest.Timeout = 30000;
+            }
+            else
+            {
+                webRequest.Timeout = request.Timeout;
+            }
+
+            return webRequest;
         }
     }
 }

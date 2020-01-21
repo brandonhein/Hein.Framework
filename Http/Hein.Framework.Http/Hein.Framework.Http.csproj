@@ -7,7 +7,7 @@
     <Description>HTTP library useful for executing API calls</Description>
     <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Http</PackageProjectUrl>
     <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Http</RepositoryUrl>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
 </Project>

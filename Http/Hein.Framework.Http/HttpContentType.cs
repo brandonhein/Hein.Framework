@@ -10,5 +10,7 @@
         public const string Css = "text/css";
         public const string Javascript = "application/javascript";
         public const string Jpeg = "image/jpeg";
+        public const string Png = "image/png";
+        public const string Jpg = "image/jpg";
     }
 }
