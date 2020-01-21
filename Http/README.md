@@ -22,6 +22,13 @@ var request = new ApiRequest()
   Body = "your json/data here"
 };
 
+/* curl sample of the request above
+curl -X POST "https://my.baseurl.com/prod/v2/example?queryKey=queryValue" 
+     -H "accept: application/json" 
+     -H "Content-Type: application/json"
+     -H "customHeader: customValueToSend"
+     -d "your json/data here"
+*/
 
 var service = new ApiService();
 
