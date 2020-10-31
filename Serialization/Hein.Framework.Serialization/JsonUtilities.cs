@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System.Text.Json;
 using System.Text.RegularExpressions;
 
 namespace Hein.Framework.Serialization
@@ -8,7 +7,13 @@ namespace Hein.Framework.Serialization
     {
         public static string FormatJson(string json)
         {
-            return JValue.Parse(json).ToString(Formatting.Indented);
+            var options = new JsonSerializerOptions()
+            {
+                WriteIndented = true
+            };
+
+            var jsonElement = JsonSerializer.Deserialize<JsonElement>(json);
+            return JsonSerializer.Serialize(jsonElement, options);
         }
 
         public static string ToIndentedJson(this string json)

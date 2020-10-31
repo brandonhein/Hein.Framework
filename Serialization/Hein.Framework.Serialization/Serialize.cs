@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-using System;
+﻿using System;
 using System.IO;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Xml;
 using System.Xml.Serialization;
 
@@ -39,16 +39,31 @@ namespace Hein.Framework.Serialization
 
         public static string ToJson(this object obj)
         {
-            return ToJson(obj, new DefaultContractResolver());
+            return ToJson(obj, new JsonSerializerOptions());
         }
 
-        public static string ToJson(this object obj, IContractResolver resolver)
+        public static string ToJson(this object obj, params JsonConverter[] converters)
         {
-            return JsonConvert.SerializeObject(obj, new JsonSerializerSettings
+            var options = new JsonSerializerOptions();
+            options.ReadCommentHandling = JsonCommentHandling.Skip;
+
+            if (Serializer.Converters != null)
             {
-                ContractResolver = resolver
-            });
+                foreach (var converter in converters)
+                {
+                    options.Converters.Add(converter);
+                }
+            }
+
+            foreach (var converter in converters)
+            {
+                options.Converters.Add(converter);
+            }
+
+            return ToJson(obj, options);
         }
+
+        public static string ToJson(this object obj, JsonSerializerOptions options) => JsonSerializer.Serialize(obj, options);
 
         public static string ToSoapXml<T>(this T value)
         {
