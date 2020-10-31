@@ -12,7 +12,7 @@ var process = new ProcessBuilder<ISampleContext>(context)
 	.AddStep(new CallThisServiceStep())
 	.AddStep(new LogActivityStep());
 
-process.Execute(); //<-- runs thru all the ordered steps, and applys step logic to the context
+await process.ExecuteAsync(); //<-- runs thru all the ordered steps, and applys step logic to the context
 
 var isSuccessful = process.SuccessfullyRan; //<-- boolean value if all steps were executed
 var stoppedAt = process.ProcessStoppedAt; //<-- string value of the step name that the process stopped at
@@ -29,7 +29,7 @@ public class MyProcessStep : ProcessStep<IMyProcessContext>
    /// Runs validation on IMyProcessContext to determine if this step should run.
    /// the process builder/executor will check this result before calling the Execute on this step
    /// </summary>
-   public override bool ShouldExecute(IMyProcessContext context)
+   public override async Task<bool> ShouldExecuteAsync(IMyProcessContext context)
    {
       //run logic here
       return true;
@@ -40,7 +40,7 @@ public class MyProcessStep : ProcessStep<IMyProcessContext>
    /// The boolean result it returns tells the process executor to continue to the next step or 
    /// stop the entire process 
    /// </summary>
-   public override bool Execute(IMyProcessContext context)
+   public override async Task<bool> ExecuteAsync(IMyProcessContext context)
    {
       //run logic here
       return true;

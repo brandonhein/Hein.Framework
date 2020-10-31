@@ -1,4 +1,4 @@
-using Newtonsoft.Json.Serialization;
+using System.Text.Json;
 using Xunit;
 
 namespace Hein.Framework.Serialization.Tests
@@ -21,7 +21,7 @@ namespace Hein.Framework.Serialization.Tests
         [Fact]
         public void Should_serialize_my_farm_object_to_json_with_camel_case_json_settings()
         {
-            var json = _myFarm.ToJson(new CamelCasePropertyNamesContractResolver());
+            var json = _myFarm.ToJson(new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase });
             Assert.Equal(ExpectedOutcome.FarmA_Json2, json);
         }
 
