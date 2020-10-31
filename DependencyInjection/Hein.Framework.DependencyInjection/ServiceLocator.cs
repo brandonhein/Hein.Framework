@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using System;
 
 namespace Hein.Framework.DependencyInjection
 {
@@ -14,10 +15,11 @@ namespace Hein.Framework.DependencyInjection
         /// <summary>
         /// Call this method at the end of your ConfigureServices method to leverage ServiceLocator
         /// </summary>
-        public static void BuildServiceLocator(this IServiceCollection collection)
+        public static IServiceProvider BuildServiceLocator(this IServiceCollection collection)
         {
             _collection = collection;
             _provider = _collection.BuildServiceProvider();
+            return _provider;
         }
 
         /// <summary>
