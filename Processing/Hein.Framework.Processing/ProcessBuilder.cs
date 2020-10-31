@@ -1,14 +1,15 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Hein.Framework.Processing
 {
     public class ProcessBuilder<T> where T : IProcessContext
     {
-        private readonly T _context;
         private readonly Dictionary<int, ProcessStep<T>> _steps;
         private int _order;
-        protected T Context { get { return _context; } }
+        private readonly T _context;
+        public T Context { get { return _context; } }
         public bool SuccessfullyRan { get; private set; }
         public string ProcessStoppedAt { get; private set; }
 
@@ -18,15 +19,15 @@ namespace Hein.Framework.Processing
             _steps = new Dictionary<int, ProcessStep<T>>();
         }
 
-        public void Execute()
+        public async Task ExecuteAsync()
         {
             var orderedSteps = _steps.OrderBy(x => x.Key);
             foreach (var current in orderedSteps)
             {
                 var step = current.Value;
-                if (step.ShouldExecute(_context))
+                if (await step.ShouldExecuteAsync(_context))
                 {
-                    var shouldContinue = step.Execute(_context);
+                    var shouldContinue = await step.ExecuteAsync(_context);
                     if (!shouldContinue)
                     {
                         ProcessStoppedAt = step.StepName;

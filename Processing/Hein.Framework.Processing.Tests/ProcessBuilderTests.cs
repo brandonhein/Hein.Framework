@@ -1,3 +1,4 @@
+using System.Threading.Tasks;
 using Xunit;
 
 namespace Hein.Framework.Processing.Tests
@@ -5,7 +6,7 @@ namespace Hein.Framework.Processing.Tests
     public class ProcessBuilderTests
     {
         [Fact]
-        public void Should_build_and_execute_a_process_builder_successfully()
+        public async Task Should_build_and_execute_a_process_builder_successfully()
         {
             var context = new MyProcessContext();
 
@@ -15,7 +16,7 @@ namespace Hein.Framework.Processing.Tests
 
             Assert.False(process.SuccessfullyRan);
 
-            process.Execute();
+            await process.ExecuteAsync();
 
             Assert.True(process.SuccessfullyRan);
             Assert.Equal("I applied my change in step 2", context.SomeStringTwo);
@@ -25,7 +26,7 @@ namespace Hein.Framework.Processing.Tests
         }
 
         [Fact]
-        public void Should_build_and_execute_process_but_stop_at_step_three()
+        public async Task Should_build_and_execute_process_but_stop_at_step_three()
         {
             var context = new MyProcessContext();
 
@@ -36,7 +37,7 @@ namespace Hein.Framework.Processing.Tests
 
             Assert.False(process.SuccessfullyRan);
 
-            process.Execute();
+            await process.ExecuteAsync();
 
             Assert.False(process.SuccessfullyRan);
             Assert.Equal("MyProcessStepThree", process.ProcessStoppedAt);
@@ -66,13 +67,13 @@ namespace Hein.Framework.Processing.Tests
         public MyProcessStepOne() : base("MyProcessStepOne")
         { }
 
-        public override bool Execute(IMyProcessContext context)
+        public override async Task<bool> ExecuteAsync(IMyProcessContext context)
         {
             context.SomeStringOne = "string one should not get applied because it fails the should execute";
             return true;
         }
 
-        public override bool ShouldExecute(IMyProcessContext context)
+        public override async Task<bool> ShouldExecuteAsync(IMyProcessContext context)
         {
             return !string.IsNullOrEmpty(context.SomeStringOne);
         }
@@ -83,13 +84,13 @@ namespace Hein.Framework.Processing.Tests
         public MyProcessStepTwo() : base("MyProcessStepTwo")
         { }
 
-        public override bool Execute(IMyProcessContext context)
+        public override async Task<bool> ExecuteAsync(IMyProcessContext context)
         {
             context.SomeStringTwo = "I applied my change in step 2";
             return true;
         }
 
-        public override bool ShouldExecute(IMyProcessContext context)
+        public override async Task<bool> ShouldExecuteAsync(IMyProcessContext context)
         {
             return true;
         }
@@ -100,12 +101,12 @@ namespace Hein.Framework.Processing.Tests
         public MyProcessStepThree() : base("MyProcessStepThree")
         { }
 
-        public override bool Execute(IMyProcessContext context)
+        public override async Task<bool> ExecuteAsync(IMyProcessContext context)
         {
             return false;
         }
 
-        public override bool ShouldExecute(IMyProcessContext context)
+        public override async Task<bool> ShouldExecuteAsync(IMyProcessContext context)
         {
             return true;
         }
