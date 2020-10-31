@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace Hein.Framework.Extensions
@@ -78,6 +80,11 @@ namespace Hein.Framework.Extensions
             return false;
         }
 
+        public static bool IsOneOf(this string val, IEnumerable<string> comparisonValue)
+        {
+            return IsOneOf(val, comparisonValue.ToArray());
+        }
+
         public static string StandardizeForCompare(this string value)
         {
             if (!string.IsNullOrEmpty(value))
@@ -86,6 +93,18 @@ namespace Hein.Framework.Extensions
             }
             return value;
         }
+
+        public static string StripPuncuation(this string value)
+        {
+            return new string(value.Where(c => !char.IsPunctuation(c)).ToArray());
+        }
+
+        public static bool ContainsCaseInsensitive(this string source, string value)
+        {
+            return source.IndexOf(value, StringComparison.OrdinalIgnoreCase) != -1;
+        }
+
+
         public static string Capitalize(this string str)
         {
             if (string.IsNullOrEmpty(str))
