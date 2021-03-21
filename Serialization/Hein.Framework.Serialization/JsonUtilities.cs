@@ -7,10 +7,8 @@ namespace Hein.Framework.Serialization
     {
         public static string FormatJson(string json)
         {
-            var options = new JsonSerializerOptions()
-            {
-                WriteIndented = true
-            };
+            var options = SerializerSettings.DefaultOptions;
+            options.WriteIndented = true;
 
             var jsonElement = JsonSerializer.Deserialize<JsonElement>(json);
             return JsonSerializer.Serialize(jsonElement, options);

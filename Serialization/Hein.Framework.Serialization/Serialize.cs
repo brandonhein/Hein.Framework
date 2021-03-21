@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hein.Framework.Serialization.Converters;
+using System;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -9,6 +10,26 @@ namespace Hein.Framework.Serialization
 {
     public static class Serialize
     {
+        private static JsonSerializerOptions _options
+        {
+            get
+            {
+                var options = new JsonSerializerOptions();
+                options.PropertyNameCaseInsensitive = true;
+                options.ReadCommentHandling = JsonCommentHandling.Skip;
+
+                if (SerializerSettings.Converters != null)
+                {
+                    foreach (var converter in SerializerSettings.Converters)
+                    {
+                        options.Converters.Add(converter);
+                    }
+                }
+
+                return options;
+            }
+        }
+
         public static string ToXml(Type type, object obj)
         {
             if (obj == null)
@@ -39,22 +60,12 @@ namespace Hein.Framework.Serialization
 
         public static string ToJson(this object obj)
         {
-            return ToJson(obj, new JsonSerializerOptions());
+            return ToJson(obj, _options);
         }
 
         public static string ToJson(this object obj, params JsonConverter[] converters)
         {
-            var options = new JsonSerializerOptions();
-            options.ReadCommentHandling = JsonCommentHandling.Skip;
-
-            if (Serializer.Converters != null)
-            {
-                foreach (var converter in converters)
-                {
-                    options.Converters.Add(converter);
-                }
-            }
-
+            var options = _options;
             foreach (var converter in converters)
             {
                 options.Converters.Add(converter);
@@ -63,7 +74,10 @@ namespace Hein.Framework.Serialization
             return ToJson(obj, options);
         }
 
-        public static string ToJson(this object obj, JsonSerializerOptions options) => JsonSerializer.Serialize(obj, options);
+        public static string ToJson(this object obj, JsonSerializerOptions options)
+        {
+            return JsonSerializer.Serialize(obj, options);
+        }
 
         public static string ToSoapXml<T>(this T value)
         {

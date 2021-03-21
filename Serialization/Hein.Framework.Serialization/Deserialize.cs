@@ -10,34 +10,14 @@ namespace Hein.Framework.Serialization
 {
     public static class Deserialize
     {
-        private static JsonSerializerOptions _options
-        {
-            get
-            {
-                var options = new JsonSerializerOptions();
-                options.PropertyNameCaseInsensitive = true;
-                options.ReadCommentHandling = JsonCommentHandling.Skip;
-
-                if (Serializer.Converters != null)
-                {
-                    foreach (var converter in Serializer.Converters)
-                    {
-                        options.Converters.Add(converter);
-                    }
-                }
-
-                return options;
-            }
-        }
-
         public static T FromJson<T>(this string json)
         {
-            return FromJson<T>(json, _options);
+            return FromJson<T>(json, SerializerSettings.DefaultOptions);
         }
 
         public static T FromJson<T>(this string json, params JsonConverter[] converters)
         {
-            var options = _options;
+            var options = SerializerSettings.DefaultOptions;
             foreach (var converter in converters)
             {
                 options.Converters.Add(converter);
@@ -50,12 +30,12 @@ namespace Hein.Framework.Serialization
 
         public static T FromJson<T>(this Stream jsonStream)
         {
-            return FromJson<T>(jsonStream, _options);
+            return FromJson<T>(jsonStream, SerializerSettings.DefaultOptions);
         }
 
         public static T FromJson<T>(this Stream jsonStream, params JsonConverter[] converters)
         {
-            var options = _options;
+            var options = SerializerSettings.DefaultOptions;
             foreach (var converter in converters)
             {
                 options.Converters.Add(converter);
@@ -91,7 +71,7 @@ namespace Hein.Framework.Serialization
         {
             if (string.IsNullOrEmpty(xml))
             {
-                throw new ArgumentNullException("xml");
+                throw new ArgumentNullException(nameof(xml));
             }
 
             xml = XmlUtilities.ReplaceBadValues(xml);
