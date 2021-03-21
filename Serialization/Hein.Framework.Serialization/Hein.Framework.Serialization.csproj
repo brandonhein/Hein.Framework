@@ -6,9 +6,9 @@
     <Authors>brandonhein</Authors>
     <Company>brandonhein</Company>
     <Description>Every framework has a serialization library/package.  So does this one.  Features To/FromJson, To/FromXml, To/FromSoapXml extensions. Along with easy to implement deserialization usages.</Description>
-    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Serialization</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/Serialization</RepositoryUrl>
-    <Version>2.0.0</Version>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/main/Serialization</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/main/Serialization</RepositoryUrl>
+    <Version>2.1.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
