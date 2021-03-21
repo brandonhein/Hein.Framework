@@ -6,10 +6,10 @@ namespace Hein.Framework.Serialization.Tests
 {
     public static class ExpectedOutcome
     {
-        public const string FarmA_Json1 = "{\"Tractors\":[{\"Type\":\"New Holland\",\"Year\":2012}],\"Trees\":[{\"TreeId\":4,\"Type\":\"Candy Crisp Apple\"},{\"TreeId\":7,\"Type\":\"Granny Smith Apple\"}]}";
-        public const string FarmA_Json2 = "{\"tractors\":[{\"type\":\"New Holland\",\"year\":2012}],\"trees\":[{\"treeId\":4,\"type\":\"Candy Crisp Apple\"},{\"treeId\":7,\"type\":\"Granny Smith Apple\"}]}";
-        public const string FarmA_Xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Farm><Tractors><Tractor><Type>New Holland</Type><Year>2012</Year></Tractor></Tractors><Trees><Tree><TreeId>4</TreeId><Type>Candy Crisp Apple</Type></Tree><Tree><TreeId>7</TreeId><Type>Granny Smith Apple</Type></Tree></Trees></Farm>";
-        public const string FarmA_Soap = "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><Farm><Tractors><Tractor><Type>New Holland</Type><Year>2012</Year></Tractor></Tractors><Trees><Tree><TreeId>4</TreeId><Type>Candy Crisp Apple</Type></Tree><Tree><TreeId>7</TreeId><Type>Granny Smith Apple</Type></Tree></Trees></Farm></soap:Body></soap:Envelope>";
+        public const string FarmA_Json1 = "{\"Tractors\":[{\"Type\":\"New Holland\",\"Year\":2012,\"Id\":42}],\"Trees\":[{\"Type\":\"Candy Crisp Apple\",\"Id\":4},{\"Type\":\"Granny Smith Apple\",\"Id\":7}]}";
+        public const string FarmA_Json2 = "{\"tractors\":[{\"type\":\"New Holland\",\"year\":2012,\"id\":42}],\"trees\":[{\"type\":\"Candy Crisp Apple\",\"id\":4},{\"type\":\"Granny Smith Apple\",\"id\":7}]}";
+        public const string FarmA_Xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?><Farm><Tractors><Tractor><Id>42</Id><Type>New Holland</Type><Year>2012</Year></Tractor></Tractors><Trees><Tree><Id>4</Id><Type>Candy Crisp Apple</Type></Tree><Tree><Id>7</Id><Type>Granny Smith Apple</Type></Tree></Trees></Farm>";
+        public const string FarmA_Soap = "<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\"><soap:Body><Farm><Tractors><Tractor><Id>42</Id><Type>New Holland</Type><Year>2012</Year></Tractor></Tractors><Trees><Tree><Id>4</Id><Type>Candy Crisp Apple</Type></Tree><Tree><Id>7</Id><Type>Granny Smith Apple</Type></Tree></Trees></Farm></soap:Body></soap:Envelope>";
     }
 
     public static class TestObject
@@ -19,24 +19,28 @@ namespace Hein.Framework.Serialization.Tests
             get
             {
                 var farm = new Farm();
-                farm.Add(new Tractor() { Type = "New Holland", Year = 2012 });
-                farm.Add(new Tree() { Type = "Candy Crisp Apple", TreeId = 4 });
-                farm.Add(new Tree() { Type = "Granny Smith Apple", TreeId = 7 });
+                farm.Add(new Tractor() { Type = "New Holland", Year = 2012, Id = 42 });
+                farm.Add(new Tree() { Type = "Candy Crisp Apple", Id = 4 });
+                farm.Add(new Tree() { Type = "Granny Smith Apple", Id = 7 });
                 return farm;
             }
         }
     }
 
-    public class Tractor
+    public class Tractor : FarmItemBase
     {
         public string Type { get; set; }
         public int Year { get; set; }
     }
 
-    public class Tree
+    public class Tree : FarmItemBase
     {
-        public int TreeId { get; set; }
         public string Type { get; set; }
+    }
+
+    public class FarmItemBase
+    {
+        public int Id { get; set; }
     }
 
     public class Farm
