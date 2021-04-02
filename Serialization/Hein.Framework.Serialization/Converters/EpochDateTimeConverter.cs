@@ -4,6 +4,13 @@ using System.Text.Json.Serialization;
 
 namespace Hein.Framework.Serialization.Converters
 {
+    /// <summary>
+    /// JsonConverter for converting DateTime to an Epoch value.
+    /// <para>Epoch is a <see cref="long"/> for number of seconds since Jan 1st 1970.</para>
+    /// <para>Serializing will take a DateTime, find the number of seconds, and send as <see cref="long"/> number.</para>
+    /// <para>Deserializing will do it's best to read from either a <see cref="long"/> number, or the string format <see cref="DateTime"/> might be in.</para>
+    /// <para>Default value: default(<see cref="DateTime"/>)</para>
+    /// </summary>
     public class EpochDateTimeConverter : JsonConverter<DateTime>
     {
         public override DateTime Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
