@@ -47,7 +47,7 @@ var soapXml = someObject.ToSoapXml();
 
 /****** Deserialize ******/
 //deserialize soap xml string to object
-var result = Deserialize.SoapToObject<MyClass>(soapXml);
+var result = soapXml.FromSoapXml<MyClass>();
 ```
 
 ## JSON Coolness
