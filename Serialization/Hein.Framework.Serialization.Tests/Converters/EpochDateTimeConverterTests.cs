@@ -3,7 +3,7 @@ using System;
 using System.Text.Json.Serialization;
 using Xunit;
 
-namespace Hein.Framework.Serialization.Tests
+namespace Hein.Framework.Serialization.Tests.Converters
 {
     public class EpochDateTimeConverterTests
     {
