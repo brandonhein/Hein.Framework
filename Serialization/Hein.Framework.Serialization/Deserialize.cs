@@ -20,7 +20,8 @@ namespace Hein.Framework.Serialization
             var options = SerializerSettings.DefaultOptions;
             foreach (var converter in converters)
             {
-                options.Converters.Add(converter);
+                if (!options.Converters.Contains(converter))
+                    options.Converters.Add(converter);
             }
 
             return FromJson<T>(json, options);
@@ -38,7 +39,8 @@ namespace Hein.Framework.Serialization
             var options = SerializerSettings.DefaultOptions;
             foreach (var converter in converters)
             {
-                options.Converters.Add(converter);
+                if (!options.Converters.Contains(converter))
+                    options.Converters.Add(converter);
             }
 
             return FromJson<T>(jsonStream, options);

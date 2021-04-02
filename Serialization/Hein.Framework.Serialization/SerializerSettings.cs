@@ -9,21 +9,44 @@ namespace Hein.Framework.Serialization
     {
         internal static ConcurrentBag<JsonConverter> Converters;
 
-        internal static JsonSerializerOptions DefaultOptions
+        public static JsonSerializerOptions DefaultOptions
         {
             get
             {
                 var options = new JsonSerializerOptions();
+                options.AllowTrailingCommas = true;
                 options.PropertyNameCaseInsensitive = true;
                 options.ReadCommentHandling = JsonCommentHandling.Skip;
+                options.NumberHandling = JsonNumberHandling.AllowReadingFromString;
 
                 if (Converters != null)
                 {
                     foreach (var converter in Converters)
                     {
-                        options.Converters.Add(converter);
+                        if (!options.Converters.Contains(converter))
+                            options.Converters.Add(converter);
                     }
                 }
+
+                var jsonOrderConverter = new JsonPropertyOrderConverter();
+                var jsonVersionConverter = new JsonVersionConverter();
+                var memoryStreamConverter = new MemoryStreamConverter();
+                var boolConverter = new BooleanConverter();
+                var nullBoolConverter = new NullableBooleanConverter();
+                var byteArrayConverter = new ByteArrayConverter();
+
+                if (!options.Converters.Contains(jsonOrderConverter))
+                    options.Converters.Add(jsonOrderConverter);
+                if (!options.Converters.Contains(jsonVersionConverter))
+                    options.Converters.Add(jsonVersionConverter);
+                if (!options.Converters.Contains(memoryStreamConverter))
+                    options.Converters.Add(memoryStreamConverter);
+                if (!options.Converters.Contains(boolConverter))
+                    options.Converters.Add(boolConverter);
+                if (!options.Converters.Contains(nullBoolConverter))
+                    options.Converters.Add(nullBoolConverter);
+                if (!options.Converters.Contains(byteArrayConverter))
+                    options.Converters.Add(byteArrayConverter);
 
                 return options;
             }

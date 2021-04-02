@@ -1,5 +1,4 @@
-﻿using Hein.Framework.Serialization.Converters;
-using System;
+﻿using System;
 using System.IO;
 using System.Text.Json;
 using System.Text.Json.Serialization;
@@ -10,26 +9,6 @@ namespace Hein.Framework.Serialization
 {
     public static class Serialize
     {
-        private static JsonSerializerOptions _options
-        {
-            get
-            {
-                var options = new JsonSerializerOptions();
-                options.PropertyNameCaseInsensitive = true;
-                options.ReadCommentHandling = JsonCommentHandling.Skip;
-
-                if (SerializerSettings.Converters != null)
-                {
-                    foreach (var converter in SerializerSettings.Converters)
-                    {
-                        options.Converters.Add(converter);
-                    }
-                }
-
-                return options;
-            }
-        }
-
         public static string ToXml(Type type, object obj)
         {
             if (obj == null)
@@ -58,22 +37,32 @@ namespace Hein.Framework.Serialization
             return ToXml(typeof(T), obj);
         }
 
+        /// <summary>
+        /// Converts any object to json string using default settings
+        /// </summary>
         public static string ToJson(this object obj)
         {
-            return ToJson(obj, _options);
+            return ToJson(obj, SerializerSettings.DefaultOptions);
         }
 
+        /// <summary>
+        /// Converts any object to json string using default settings, while also adding additional custom converters you might have
+        /// </summary>
         public static string ToJson(this object obj, params JsonConverter[] converters)
         {
-            var options = _options;
+            var options = SerializerSettings.DefaultOptions;
             foreach (var converter in converters)
             {
-                options.Converters.Add(converter);
+                if (!options.Converters.Contains(converter))
+                    options.Converters.Add(converter);
             }
 
             return ToJson(obj, options);
         }
 
+        /// <summary>
+        /// Converts any object to json string using any <see cref="JsonSerializerOptions"/> you want
+        /// </summary>
         public static string ToJson(this object obj, JsonSerializerOptions options)
         {
             return JsonSerializer.Serialize(obj, options);
