@@ -7,6 +7,11 @@ namespace Hein.Framework.Serialization.Converters
 {
     public class MemoryStreamConverter : JsonConverter<MemoryStream>
     {
+        public override bool CanConvert(Type typeToConvert)
+        {
+            return typeToConvert == typeof(MemoryStream) || typeToConvert == typeof(Stream);
+        }
+
         public override MemoryStream Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
         {
             if (reader.TokenType == JsonTokenType.String && reader.TryGetBytesFromBase64(out var bytes))

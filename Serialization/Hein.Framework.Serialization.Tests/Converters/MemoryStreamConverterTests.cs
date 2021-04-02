@@ -1,10 +1,8 @@
-﻿using Hein.Framework.Serialization.Converters;
-using System.IO;
+﻿using System.IO;
 using System.Text;
-using System.Text.Json.Serialization;
 using Xunit;
 
-namespace Hein.Framework.Serialization.Tests
+namespace Hein.Framework.Serialization.Tests.Converters
 {
     public class MemoryStreamConverterTests
     {
@@ -38,7 +36,6 @@ namespace Hein.Framework.Serialization.Tests
 
     public class SampleObject
     {
-        [JsonConverter(typeof(MemoryStreamConverter))]
         public MemoryStream Stream { get; set; }
     }
 }
