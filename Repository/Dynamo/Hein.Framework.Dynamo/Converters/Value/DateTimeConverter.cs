@@ -1,7 +1,7 @@
 ﻿using Amazon.DynamoDBv2.Model;
 using System;
 
-namespace Hein.Framework.Dynamo.Converters
+namespace Hein.Framework.Dynamo.Converters.Value
 {
     internal class DateTimeConverter : DynamoAttributeValueConverter<DateTime>
     {

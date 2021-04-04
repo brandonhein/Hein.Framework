@@ -1,6 +1,6 @@
 ﻿using Amazon.DynamoDBv2.Model;
 
-namespace Hein.Framework.Dynamo.Converters
+namespace Hein.Framework.Dynamo.Converters.Value
 {
     internal class IntegerConverter : DynamoAttributeValueConverter<int>
     {

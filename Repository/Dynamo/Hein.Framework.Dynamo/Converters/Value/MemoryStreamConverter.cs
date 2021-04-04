@@ -1,7 +1,7 @@
 ﻿using Amazon.DynamoDBv2.Model;
 using System.IO;
 
-namespace Hein.Framework.Dynamo.Converters
+namespace Hein.Framework.Dynamo.Converters.Value
 {
     internal class MemoryStreamConverter : DynamoAttributeValueConverter<MemoryStream>
     {
