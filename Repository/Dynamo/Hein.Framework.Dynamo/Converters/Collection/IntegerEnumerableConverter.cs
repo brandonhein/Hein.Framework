@@ -31,6 +31,7 @@ namespace Hein.Framework.Dynamo.Converters.Collection
             _converter = new IntegerEnumerableConverter();
         }
 
+        internal override int[] Convert(object value) => ((IEnumerable<int>)value).Cast<int>().ToArray();
         public override int[] Read(AttributeValue value) => _converter.Read(value).ToArray();
         public override AttributeValue Write(int[] item) => _converter.Write(item);
     }
@@ -43,6 +44,7 @@ namespace Hein.Framework.Dynamo.Converters.Collection
             _converter = new IntegerEnumerableConverter();
         }
 
+        internal override List<int> Convert(object value) => ((IEnumerable<int>)value).Cast<int>().ToList();
         public override List<int> Read(AttributeValue value) => _converter.Read(value).ToList();
         public override AttributeValue Write(List<int> item) => _converter.Write(item);
     }

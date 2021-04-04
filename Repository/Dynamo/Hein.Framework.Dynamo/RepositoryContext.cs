@@ -1,6 +1,7 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.Model;
 using Hein.Framework.Dynamo.Command;
+using Hein.Framework.Dynamo.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -190,6 +191,7 @@ namespace Hein.Framework.Dynamo
             if (request is GetItemRequest)
             {
                 var response = await _dynamo.GetItemAsync((GetItemRequest)request);
+                results.Add(response.Item.MapFromDynamo<T>());
             }
             if (request is ScanRequest)
             {
@@ -198,7 +200,7 @@ namespace Hein.Framework.Dynamo
                 while (gettingAll)
                 {
                     var response = await _dynamo.ScanAsync(scanRequest);
-                    //results.AddRange();
+                    results.AddRange(response.Items.Select(x => x.MapFromDynamo<T>()));
 
                     if (response.LastEvaluatedKey == default(Dictionary<string, AttributeValue>))
                         gettingAll = false;
@@ -213,7 +215,7 @@ namespace Hein.Framework.Dynamo
                 while (gettingAll)
                 {
                     var response = await _dynamo.QueryAsync(queryRequest);
-                    //results.AddRange();
+                    results.AddRange(response.Items.Select(x => x.MapFromDynamo<T>()));
 
                     if (response.LastEvaluatedKey == default(Dictionary<string, AttributeValue>))
                         gettingAll = false;

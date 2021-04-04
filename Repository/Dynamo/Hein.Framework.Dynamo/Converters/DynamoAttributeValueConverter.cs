@@ -13,7 +13,7 @@ namespace Hein.Framework.Dynamo.Converters
     public abstract class DynamoAttributeValueConverter<T> : IDynamoAttributeValueConverter<T>
     {
         public virtual bool CanConvert(Type typeToConvert) => typeof(T) == typeToConvert;
-        internal T Convert(object value) => (T)value;
+        internal virtual T Convert(object value) => (T)value;
 
         public abstract T Read(AttributeValue value);
         public abstract AttributeValue Write(T item);

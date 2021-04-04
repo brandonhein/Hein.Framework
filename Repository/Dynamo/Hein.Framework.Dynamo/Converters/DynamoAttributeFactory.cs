@@ -9,7 +9,7 @@ using System.Runtime.CompilerServices;
 [assembly: InternalsVisibleTo("Hein.Framework.Dynamo.Tests")]
 namespace Hein.Framework.Dynamo.Converters
 {
-    internal static class DynamoAttributeValueConverter
+    internal static class DynamoAttributeFactory
     {
         private static ConcurrentBag<dynamic> _converters = new ConcurrentBag<dynamic>()
         {
@@ -74,31 +74,58 @@ namespace Hein.Framework.Dynamo.Converters
             new UnsignedShortEnumerableConverter(),
             new UnsignedShortArrayConverter(),
             new UnsignedShortListConverter(),
+
+            new ObjectListConverter(),
+            new ObjectEnumerableConverter(),
+
+            new ObjectConverter()
         };
+
+        public static object GetConverter(Type itemType)
+        {
+            var converter = _converters.FirstOrDefault(x => x.CanConvert(itemType));
+            if (converter == null)
+                return new ObjectConverter();
+
+            return converter;
+        }
+
+        public static object Read(AttributeValue value)
+        {
+            foreach (var converter in _converters)
+            {
+                try
+                {
+                    var result = (object)converter.Read(value);
+                    if (result != null)
+                    {
+                        return result;
+                    }
+                }
+                catch { }
+            }
+
+            return default;
+        }
 
         public static object Read(AttributeValue value, Type itemType)
         {
-            //add custom converter attr check
-
-            var converter = _converters.FirstOrDefault(x => x.CanConvert(itemType));
+            dynamic converter = GetConverter(itemType);
             if (converter != null)
-            {
                 return converter.Read(value);
-            }
 
-            throw new Exception();
+            return default;
         }
 
-        public static AttributeValue Write(object item, Type itemType)
+        public static AttributeValue Create(object item)
         {
-            //add custom converter attr check
-            var converter = _converters.FirstOrDefault(x => x.CanConvert(itemType));
-            if (converter != null)
-            {
-                return converter.Write(converter.Convert(item));
-            }
+            var converter = GetConverter(item.GetType());
+            return Create(item, converter);
+        }
 
-            throw new Exception("I thru this!");
+        public static AttributeValue Create(object item, dynamic converter)
+        {
+            return converter.Write(converter.Convert(item));
         }
     }
 }

@@ -1,11 +1,15 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
 using Amazon.DynamoDBv2.Model;
 using Hein.Framework.Dynamo.Attributes;
+using Hein.Framework.Dynamo.Converters;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
+[assembly: InternalsVisibleTo("Hein.Framework.Dynamo.Tests")]
 namespace Hein.Framework.Dynamo.Helpers
 {
     internal static class DynamoDbHelper
@@ -40,6 +44,27 @@ namespace Hein.Framework.Dynamo.Helpers
 
             return null;
 
+        }
+
+        public static Dictionary<string, AttributeValue> MapToDynamo(this object entity)
+        {
+            return DynamoAttributeFactory.Create(entity).M;
+        }
+
+        public static T MapFromDynamo<T>(this Dictionary<string, AttributeValue> dynamoItems)
+        {
+            var entity = (T)Activator.CreateInstance(typeof(T));
+            var properties = typeof(T).GetProperties();
+            
+            foreach (var property in properties)
+            {
+                if (dynamoItems.ContainsKey(property.Name))
+                {
+                    property.SetValue(entity, DynamoAttributeFactory.Read(dynamoItems[property.Name], property.PropertyType));
+                }
+            }
+
+            return entity;
         }
     }
 }

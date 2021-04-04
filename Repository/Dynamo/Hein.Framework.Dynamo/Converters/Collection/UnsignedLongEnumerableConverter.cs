@@ -31,6 +31,7 @@ namespace Hein.Framework.Dynamo.Converters.Collection
             _converter = new UnsignedLongEnumerableConverter();
         }
 
+        internal override ulong[] Convert(object value) => ((IEnumerable<ulong>)value).Cast<ulong>().ToArray();
         public override ulong[] Read(AttributeValue value) => _converter.Read(value).ToArray();
         public override AttributeValue Write(ulong[] item) => _converter.Write(item);
     }
@@ -43,6 +44,7 @@ namespace Hein.Framework.Dynamo.Converters.Collection
             _converter = new UnsignedLongEnumerableConverter();
         }
 
+        internal override List<ulong> Convert(object value) => ((IEnumerable<ulong>)value).Cast<ulong>().ToList();
         public override List<ulong> Read(AttributeValue value) => _converter.Read(value).ToList();
         public override AttributeValue Write(List<ulong> item) => _converter.Write(item);
     }
