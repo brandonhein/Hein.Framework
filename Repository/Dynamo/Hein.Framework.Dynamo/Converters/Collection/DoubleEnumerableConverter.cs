@@ -1,4 +1,6 @@
 ﻿using Amazon.DynamoDBv2.Model;
+using Hein.Framework.Dynamo.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +8,7 @@ namespace Hein.Framework.Dynamo.Converters.Collection
 {
     internal class DoubleEnumerableConverter : DynamoAttributeValueConverter<IEnumerable<double>>
     {
+        public override bool CanConvert(Type typeToConvert) => base.CanConvert(typeToConvert) || typeToConvert.IsOneOf(typeof(ICollection<double>), typeof(IReadOnlyCollection<double>));
         public override IEnumerable<double> Read(AttributeValue value)
         {
             if (value.NULL)
@@ -44,6 +47,7 @@ namespace Hein.Framework.Dynamo.Converters.Collection
             _converter = new DoubleEnumerableConverter();
         }
 
+        public override bool CanConvert(Type typeToConvert) => base.CanConvert(typeToConvert) || typeToConvert.IsOneOf(typeof(IList<double>), typeof(IReadOnlyList<double>));
         internal override List<double> Convert(object value) => ((IEnumerable<double>)value).Cast<double>().ToList();
         public override List<double> Read(AttributeValue value) => _converter.Read(value).ToList();
         public override AttributeValue Write(List<double> item) => _converter.Write(item);

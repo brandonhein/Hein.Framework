@@ -1,4 +1,6 @@
 ﻿using Amazon.DynamoDBv2.Model;
+using Hein.Framework.Dynamo.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -6,6 +8,7 @@ namespace Hein.Framework.Dynamo.Converters.Collection
 {
     internal class UnsignedLongEnumerableConverter : DynamoAttributeValueConverter<IEnumerable<ulong>>
     {
+        public override bool CanConvert(Type typeToConvert) => base.CanConvert(typeToConvert) || typeToConvert.IsOneOf(typeof(ICollection<ulong>), typeof(IReadOnlyCollection<ulong>));
         public override IEnumerable<ulong> Read(AttributeValue value)
         {
             if (value.NULL)
@@ -44,6 +47,7 @@ namespace Hein.Framework.Dynamo.Converters.Collection
             _converter = new UnsignedLongEnumerableConverter();
         }
 
+        public override bool CanConvert(Type typeToConvert) => base.CanConvert(typeToConvert) || typeToConvert.IsOneOf(typeof(IList<ulong>), typeof(IReadOnlyList<ulong>));
         internal override List<ulong> Convert(object value) => ((IEnumerable<ulong>)value).Cast<ulong>().ToList();
         public override List<ulong> Read(AttributeValue value) => _converter.Read(value).ToList();
         public override AttributeValue Write(List<ulong> item) => _converter.Write(item);
