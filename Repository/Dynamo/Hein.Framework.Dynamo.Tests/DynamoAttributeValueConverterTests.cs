@@ -12,19 +12,16 @@ namespace Hein.Framework.Dynamo.Tests
         [Fact]
         public void Should_find_and_convert_to_dynamo_attribute_value()
         {
-            try
-            {
-                var table = new Table();
-                table.Add(new Item());
+            var table = new Table();
+            table.Add(new Item());
 
-                var result = table.MapToDynamo();
+            var result = table.MapToDynamo();
+            var tableAgain = result.MapFromDynamo<Table>();
 
-                var tableAgain = result.MapFromDynamo<Table>();
-            }
-            catch (Exception ex)
-            {
-
-            }
+            Assert.Equal(table.Value, tableAgain.Value);
+            Assert.Equal(table.Numbers, tableAgain.Numbers);
+            Assert.Equal(table.MoarItems.Count(), tableAgain.MoarItems.Count());
+            Assert.Equal(table.Items.Count(), tableAgain.Items.Count());
         }
     }
 
@@ -33,18 +30,22 @@ namespace Hein.Framework.Dynamo.Tests
         public Table()
         {
             Value = "hiya";
-            Items = new List<Item>();
+            Numbers = new int[] { 16, 74, 78 };
+            Items = new Item[] { };
+            MoarItems = new Item2[] { new Item2(), new Item2() };
         }
 
         public void Add(Item item)
         {
             var items = Items.ToList();
             items.Add(item);
-            Items = items.ToList();
+            Items = items.ToArray();
         }
 
         public string Value { get; set; }
-        public List<Item> Items { get; set; }
+        public int[] Numbers { get; set; }
+        public IEnumerable<Item2> MoarItems { get; set; }
+        public Item[] Items { get; set; }
     }
 
     public class Item
@@ -57,5 +58,11 @@ namespace Hein.Framework.Dynamo.Tests
 
         public Guid Id { get; set; }
         public DateTime CreateDate { get; set; }
+    }
+
+    public class Item2
+    {
+        public Item2() => AnotherId = Guid.NewGuid().ToString();
+        public string AnotherId { get; set; }
     }
 }
