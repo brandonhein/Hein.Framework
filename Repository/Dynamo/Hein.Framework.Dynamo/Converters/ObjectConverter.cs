@@ -8,21 +8,18 @@ namespace Hein.Framework.Dynamo.Converters
     {
         public override object Read(AttributeValue value)
         {
-            if (value.NULL)
-                return null;
-
             if (value.IsMSet)
             {
-                var result = new Dictionary<string, object>();
-                foreach (var attributeValue in value.M)
+                var dictionary = new Dictionary<string, object>();
+                foreach (var item in value.M)
                 {
-                    result.Add(attributeValue.Key, DynamoAttributeFactory.Read(attributeValue.Value));
+                    dictionary.Add(item.Key, DynamoAttributeFactory.Read(item.Value));
                 }
 
-                return result.ToObject();
+                return dictionary.ToObject();
             }
 
-            return default;
+            return null;
         }
 
         public override AttributeValue Write(object item)

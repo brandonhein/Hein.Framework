@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
 using System.Reflection;
@@ -28,5 +30,25 @@ namespace Hein.Framework.Dynamo.Helpers
                 propInfo => propInfo.GetValue(source, null)
             );
         }
+
+        public static IList CastToList(this IEnumerable source, Type itemType)
+        {
+            var listType = typeof(List<>).MakeGenericType(itemType);
+            var list = (IList)Activator.CreateInstance(listType);
+            foreach (var item in source) list.Add(item);
+            return list;
+        }
+
+        public static Array CastToArray(this IEnumerable source, Type elementType)
+        {
+            var list = CastToList(source, elementType);
+            var array = Array.CreateInstance(elementType, list.Count);
+            list.CopyTo(array, 0);
+
+            return array;
+        }
+
+        public static bool IsOneOf(this Type type, params Type[] types)
+            => type != null && types != null && types.Any() && types.Contains(type);
     }
 }

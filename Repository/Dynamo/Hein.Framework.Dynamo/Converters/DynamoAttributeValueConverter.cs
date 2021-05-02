@@ -3,9 +3,13 @@ using System;
 
 namespace Hein.Framework.Dynamo.Converters
 {
-    public interface IDynamoAttributeValueConverter<T>
+    public interface IDynamoAttributeValueConverterBase
     {
         bool CanConvert(Type typeToConvert);
+    }
+
+    public interface IDynamoAttributeValueConverter<T> : IDynamoAttributeValueConverterBase
+    {
         T Read(AttributeValue value);
         AttributeValue Write(T item);
     }

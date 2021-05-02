@@ -2,7 +2,9 @@
 using Hein.Framework.Dynamo.Converters.Collection;
 using Hein.Framework.Dynamo.Converters.Value;
 using System;
+using System.Collections;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 
@@ -77,13 +79,20 @@ namespace Hein.Framework.Dynamo.Converters
 
             new ObjectListConverter(),
             new ObjectEnumerableConverter(),
+            new ObjectArrayConverter(),
 
-            new ObjectConverter()
+            new ObjectConverter(),
         };
+
+        public static bool HasConverter(Type itemType)
+        {
+            var converter = _converters.Reverse().FirstOrDefault(x => x.CanConvert(itemType));
+            return converter != null;
+        }
 
         public static object GetConverter(Type itemType)
         {
-            var converter = _converters.FirstOrDefault(x => x.CanConvert(itemType));
+            var converter = _converters.Reverse().FirstOrDefault(x => x.CanConvert(itemType));
             if (converter == null)
                 return new ObjectConverter();
 
@@ -92,17 +101,18 @@ namespace Hein.Framework.Dynamo.Converters
 
         public static object Read(AttributeValue value)
         {
-            foreach (var converter in _converters)
+            foreach (var converter in _converters.Reverse())
             {
                 try
                 {
-                    var result = (object)converter.Read(value);
-                    if (result != null)
-                    {
+                    dynamic result = converter.Read(value);
+                    if (result is IEnumerable)
+                    { }
+                    else if (result != null)
                         return result;
-                    }
                 }
-                catch { }
+                catch
+                { }
             }
 
             return default;
