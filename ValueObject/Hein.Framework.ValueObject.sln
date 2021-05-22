@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.ValueObject", "Hein.Framework.ValueObject\Hein.Framework.ValueObject.csproj", "{7AEA1B85-E20C-46F6-8D6E-AA317EFFA547}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hein.Framework.ValueObject.Tests", "Hein.Framework.ValueObject.Tests\Hein.Framework.ValueObject.Tests.csproj", "{7C40A49B-446E-4F5F-978E-7F43A34ACCAA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6B0A8A2A-4440-4494-9895-45D916A0B920}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7AEA1B85-E20C-46F6-8D6E-AA317EFFA547}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7AEA1B85-E20C-46F6-8D6E-AA317EFFA547}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7AEA1B85-E20C-46F6-8D6E-AA317EFFA547}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7AEA1B85-E20C-46F6-8D6E-AA317EFFA547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C40A49B-446E-4F5F-978E-7F43A34ACCAA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C40A49B-446E-4F5F-978E-7F43A34ACCAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C40A49B-446E-4F5F-978E-7F43A34ACCAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C40A49B-446E-4F5F-978E-7F43A34ACCAA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {46A4A64D-F1E5-4684-B484-998DFA53A501}
+	EndGlobalSection
+EndGlobal
