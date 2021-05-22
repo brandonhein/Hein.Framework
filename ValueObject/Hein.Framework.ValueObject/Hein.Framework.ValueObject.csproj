@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>brandonhein</Authors>
+    <Company>brandonhein</Company>
+    <Description>Value Object/Type pattern enabler</Description>
+    <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/main/ValueObject</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/main/ValueObject</RepositoryUrl>
+  </PropertyGroup>
+
+</Project>

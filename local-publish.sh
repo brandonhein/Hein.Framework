@@ -29,3 +29,8 @@ dotnet publish ./Serialization/Hein.Framework.Serialization/Hein.Framework.Seria
 powershell Compress-Archive -Path './.publish/Hein.Framework.Serialization/*' -DestinationPath './.publish/Hein.Framework.Serialization.zip'
 powershell Remove-Item './.publish/Hein.Framework.Serialization' -Recurse
 powershell Move-Item -Path ./Serialization/Hein.Framework.Serialization/bin/Debug/*.nupkg -Destination ./.publish
+
+dotnet clean ./ValueObject/Hein.Framework.ValueObject/Hein.Framework.ValueObject.csproj
+powershell Compress-Archive -Path './.publish/Hein.Framework.ValueObject/*' -DestinationPath './.publish/Hein.Framework.ValueObject.zip'
+powershell Remove-Item './.publish/Hein.Framework.ValueObject' -Recurse
+powershell Move-Item -Path ./ValueObject/Hein.Framework.ValueObject/bin/Debug/*.nupkg -Destination ./.publish
