@@ -12,8 +12,9 @@ namespace Hein.Framework.Processing
 
         /// <summary>
         /// Runs validation on the processcontext to determine if the current step should run or not
+        /// <para>Default is set to true aka, always execute this step</para>
         /// </summary>
-        public abstract Task<bool> ShouldExecuteAsync(T context);
+        public virtual Task<bool> ShouldExecuteAsync(T context) => Task.FromResult(true);
 
         /// <summary>
         /// Runs/applies logic to the processcontext.  if it returns 'true' it will proceed to the next step. if 'false' it breaks out of the execution of steps
