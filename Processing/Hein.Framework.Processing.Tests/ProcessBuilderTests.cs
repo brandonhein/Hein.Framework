@@ -60,6 +60,8 @@ namespace Hein.Framework.Processing.Tests
     {
         public string SomeStringOne { get; set; }
         public string SomeStringTwo { get; set; }
+
+        public string ProcessName => "MyProcessContext";
     }
 
     public class MyProcessStepOne : ProcessStep<IMyProcessContext>
@@ -89,11 +91,6 @@ namespace Hein.Framework.Processing.Tests
             context.SomeStringTwo = "I applied my change in step 2";
             return true;
         }
-
-        public override async Task<bool> ShouldExecuteAsync(IMyProcessContext context)
-        {
-            return true;
-        }
     }
 
     public class MyProcessStepThree : ProcessStep<IMyProcessContext>
@@ -104,11 +101,6 @@ namespace Hein.Framework.Processing.Tests
         public override async Task<bool> ExecuteAsync(IMyProcessContext context)
         {
             return false;
-        }
-
-        public override async Task<bool> ShouldExecuteAsync(IMyProcessContext context)
-        {
-            return true;
         }
     }
 }
