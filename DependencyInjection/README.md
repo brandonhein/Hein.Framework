@@ -9,3 +9,12 @@ services.BuildServiceLocator();
 //this can now be fetched at any time in the application that needs IFakeServiceOne
 var service = ServiceLocator.Get<IFakeServiceOne>();
 ```
+
+```csharp
+//call this method to register all services that implement a specific service
+services.AddAll<IGenerateView>();
+
+//call this method to register all generic services that implement a generic service
+//this is useful if you have different implementations but all share the same generic interface
+services.AddAll(typeof(IReport<>));
+```

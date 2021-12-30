@@ -7,7 +7,7 @@
     <PackageProjectUrl>https://github.com/brandonhein/Hein.Framework/tree/master/DependancyInjection</PackageProjectUrl>
     <RepositoryUrl>https://github.com/brandonhein/Hein.Framework/tree/master/DependancyInjection</RepositoryUrl>
     <Description>ServiceLocator implementation that leverages Microsoft.Extensions.DependencyInjection IServiceCollection and ServiceProvider in a way that can be called anywhere in an application</Description>
-    <Version>1.1.0</Version>
+    <Version>1.2.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
