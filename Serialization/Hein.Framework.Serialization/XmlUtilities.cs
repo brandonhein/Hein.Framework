@@ -43,12 +43,22 @@ namespace Hein.Framework.Serialization
 
         public static string CompressXml(this string value)
         {
-            value = value.Replace("\r\n", "").Replace("\r", "").Replace("\n", "").Replace("\t", "")
-                .Replace(Environment.NewLine, "");
+            //var doc = new XmlDocument();
+            //doc.LoadXml(value);
+            //return doc.OuterXml;
 
-            var doc = new XmlDocument();
-            doc.LoadXml(value);
-            return doc.OuterXml;
+            var xd = new XmlDocument();
+            xd.LoadXml(value);
+            var sb = new StringBuilder();
+            using (var sw = new StringWriter(sb))
+            {
+                using (var xtw = new XmlTextWriter(sw))
+                {
+                    xtw.Formatting = Formatting.None;
+                    xd.WriteTo(xtw);
+                }
+            }
+            return sb.ToString();
         }
 
         public static string RemoveControlCharacters(string inString)
