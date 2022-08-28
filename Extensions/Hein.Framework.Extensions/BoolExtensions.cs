@@ -4,8 +4,7 @@
     {
         public static string ToYesNo(this bool val)
         {
-            string retVal = string.Empty;
-
+            var retVal = string.Empty;
             retVal = val ? "Yes" : "No";
 
             return retVal;
@@ -13,7 +12,7 @@
 
         public static string ToYN(this bool val)
         {
-            string retVal = string.Empty;
+            var retVal = string.Empty;
             retVal = val ? "Y" : "N";
             return retVal;
         }

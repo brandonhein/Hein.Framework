@@ -54,6 +54,8 @@ namespace Hein.Framework.Extensions
             }
         }
 
+        public static Stream ToStream(this string s) => GenerateStream(s);
+
         public static Stream GenerateStream(this string s)
         {
             var stream = new MemoryStream();
@@ -96,7 +98,10 @@ namespace Hein.Framework.Extensions
 
         public static string StripPuncuation(this string value)
         {
-            return new string(value.Where(c => !char.IsPunctuation(c)).ToArray());
+            if (string.IsNullOrEmpty(value))
+                return value;
+
+            return new string(value.Where(x => !char.IsPunctuation(x)).Where(x => !char.IsSymbol(x)).ToArray());
         }
 
         public static bool ContainsCaseInsensitive(this string source, string value)
@@ -104,13 +109,29 @@ namespace Hein.Framework.Extensions
             return source.IndexOf(value, StringComparison.OrdinalIgnoreCase) != -1;
         }
 
+        public static string SafeTrim(this string value)
+        {
+            if (string.IsNullOrEmpty(value))
+                return value;
+
+            try
+            {
+                return value.Trim();
+            }
+            catch
+            {
+                return value;
+            }
+        }
+
+        public static string ToCapitalize(this string str) => Capitalize(str);
 
         public static string Capitalize(this string str)
         {
             if (string.IsNullOrEmpty(str))
-            {
                 return str;
-            }
+
+            str = str.ToLower();
 
             char[] array = str.ToCharArray();
             if (array.Length >= 1 && char.IsLower(array[0]))
@@ -120,7 +141,7 @@ namespace Hein.Framework.Extensions
 
             for (int i = 1; i < array.Length; i++)
             {
-                if (array[i - 1] == ' ' && char.IsLower(array[i]))
+                if ((array[i - 1] == ' ' || array[i - 1] == '-') && char.IsLower(array[i]))
                 {
                     array[i] = char.ToUpper(array[i]);
                 }
